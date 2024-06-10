@@ -59,6 +59,47 @@ Subjects were collected from a breeding colony kept in the lab since 2019. All a
  
 
 ## Results
+
+**Preliminary table**
+```{r, tbl-data}
+source(here("R", "data_process.R"))
+summary_table <- data_num %>%
+  filter(choice == 1) %>% # Filter to keep only correct choices
+  group_by(trt, test_type) %>% # Group by treatment and test
+  summarise(count = n()) %>% # Count the number of correct choices
+  pivot_wider(names_from = test_type, values_from = count, values_fill = list(count = 0)) %>% # Spread tests to columns
+data.frame()
+write.csv(summary_table, file= "./output/Checking/summary_table.csv")
+data_num_bias <- data_num %>%
+  mutate(
+    actual_choice_lat = case_when(
+      pos_high_lat == "Right" & choice == 1 ~ "Right",
+      pos_high_lat == "Right" & choice == 0 ~ "Left",
+      pos_high_lat == "Left" & choice == 1 ~ "Left",
+      pos_high_lat == "Left" & choice == 0 ~ "Right",
+      TRUE ~ NA_character_
+    ),
+    actual_choice_dist = case_when(
+      pos_high_risk == "Close" & choice == 1 ~ "Close",
+      pos_high_risk == "Close" & choice == 0 ~ "Far",
+      pos_high_risk == "Far" & choice == 1 ~ "Far",
+      pos_high_risk == "Far" & choice == 0 ~ "Close",
+      TRUE ~ NA_character_
+    )
+  )
+summary_biases <- data_num_bias %>%
+  group_by(trt) %>% # Group by treatment and test
+  summarise(
+    right_choices = sum(actual_choice_lat == "Right", na.rm = TRUE),
+    left_choices = sum(actual_choice_lat == "Left", na.rm = TRUE),
+    close_choices = sum(actual_choice_dist == "Close", na.rm = TRUE),
+    far_choices = sum(actual_choice_dist == "Far", na.rm = TRUE)
+  ) %>% # Count the number of correct choices
+data.frame()
+write.csv(summary_biases, file= "./output/Checking/summary_biases.csv")
+```
+
+
 ```{r, sampleSize}
 #| label: sampleSize
 # List with the sample sizes from the database (here("output/databases_clean/data_asso.csv") as the sample size per species and group is the same on each task. We used function sample (see func.R) to estimate the sample size per treatment and species.
