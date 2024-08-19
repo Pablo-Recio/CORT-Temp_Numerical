@@ -21,7 +21,7 @@
 #
 #| label: packages
 pacman::p_load(tidyverse, flextable, emmeans, DHARMa, brms, here, ggplot2, lme4, zoo, lmerTest, broom, tidybayes, forcats, MASS,
-fitdistrplus)
+fitdistrplus, DHARMa)
 #
 #
 #
@@ -134,13 +134,13 @@ for(k in 1:length(hormone)){
 refit = FALSE
 if(refit){
   # Get the formula and family of variables
-  lat <- bf(latency ~ test_type*temp*cort + sex + age + (1|lizard_id) + (1|clutch), family = negbinomial())
+  lat <- bf(log(latency) ~ test_type*temp*cort + sex + age + (1|lizard_id) + (1|clutch), family = gaussian())
   choice <- bf(choice ~ test_type*temp*cort + sex + age + (1|lizard_id) + (1|clutch), family = bernoulli(link = "logit"))
   int <- bf(compared_interest ~ test_type*temp*cort + sex + age + (1|lizard_id) + (1|clutch),
-    family = student())
+    family = gaussian())
   # Fit the model
   model <- brm(lat + choice + int,
-                chains = 4, cores = 4, iter = 3000, warmup = 1000, control = list(adapt_delta = 0.99),
+                chains = 4, cores = 4, iter = 3000, warmup = 1000, control = list(adapt_delta = 0.99, max_treedepth =12),
                 data = data_num)
     # Write the model to a file
     saveRDS(model, file = here("output/models/model_num.rds"))
@@ -148,30 +148,20 @@ if(refit){
       # Read the model from a file
       model <- readRDS(file = here("output/models/model_num.rds"))
   } 
-  # Extract posteriors
+# Extract posteriors
 posteriors <- as_draws_df(model)
 #
 #
 #
 #| label: resultsorg
-# Organise the estimated results based on the posteriors
-##
+# Get predictions for every test and treatment based on the posteriors of the model. We used the function org_post (see func.R) to get the predictions.
+source(here("R", "func.R"))
+## A) Get predictions
+post_lat <- org_post("lat")
+post_choice <- org_post("choice")
+post_int <- org_post("int")
 #
-# If I want to get the probability of choosing right per treatment and trial from the posteriors, I will need to take Intercept of each ch treatment and add it, then get the trial-treatment slope, and then model each probability as:
-# P = exp(intercept + slope*trial) / (1 + exp(intercept + slope*trial))
-# And to estimate the Latency it will have to be the same but
-# Lat = intercept * exp(slope*trial)
-# What is trial here?
-# What should I do to get the estimated compared_interest if it follows a t student distribution?
-# Would be:
-# Estimated interest = intercept + slope * trial 
-# correct?
-# How do I get each Intercept for each treatment/trial? And the slope?
-# 
-# E.g.: Getting estimated Latency for CORT-Hot in the 1 VS 3 trial (base level is CORT-Cold test 1 VS 4)
-# Intercept = posteriors$b_latency_Intercept + posteriors$b_latency_test_type1VS3 + posteriors$b_latency_tempHot 
-# Slope = b_latency_test_type1VS3:tempHot
-# Estimated Latency = Intercept * exp(Slope * Trial?)
+write.csv(post_lat, here("output/Checking/post_lat.csv"))
 # 
 #
 #
@@ -349,8 +339,13 @@ cat("\\newpage")
 #
 #
 # Chunk for plotting the model
-#
+## Initial plot
 plot(model)
+#
+## pp_checks
+pp_check(model, resp = "loglatency")
+pp_check(model, resp = "choice")
+pp_check(model, resp = "comparedinterest")
 #
 #
 #

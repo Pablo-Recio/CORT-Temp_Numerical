@@ -24,6 +24,45 @@ sample <- function(corti, therm, bias){
 }
 ####################
 ####################
+# Get predictions based on posteriors
+#' @title org_post
+#' @param var The response variable we are interested in ("lat", "choice", "int")
+org_post <- function(var){
+  df <- data.frame() #create empty df
+  sex <- unique(data_num$sex)
+  test <- unique(data_num$test_type)
+  temp <- unique(data_num$temp)
+  horm <- unique(data_num$cort) # create the vectors employed for the loops
+  # create names for each variable and each df:
+  if(var == "lat"){
+    name <- "loglatency"
+  } else if(var == "choice"){
+    name <- "choice"
+  } else if(var == "int"){
+    name <- comparedinterest
+  } else{
+    stop("Variable not valid")
+  } 
+  data <- posteriors %>% dplyr::select(contains(paste0("b_", name)))
+  for(i in sex){
+    if(i == "m"){
+      df_m <- data %>%
+        mutate(!!paste0("b_", name, "_Intercept") := 
+                 !!sym(paste0("b_", name, "_Intercept")) + 
+                 !!sym(paste0("b_", name, "_sexm"))) %>%
+        dplyr::select(-contains(paste0("b_", name, "_sexm")))
+    } else if(i == "f"){
+      df_f <- data %>% 
+        dplyr::select(-contains(paste0("b_", name, "_sexm")))
+    }
+  }
+df <- rbind(df_m, df_f) 
+return(df)
+}
+print(paste0("b_", name, "_Intercept"))
+print(paste0("b_", name, "sexm"))
+####################
+####################
 # Estimate p-values using pmcm
 #' @title pMCMC Function
 #' @param x The vector for the posterior distribution. Note that this will test the null hypothesis that the parameter of interest is significantly different from 0. 
