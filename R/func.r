@@ -23,7 +23,7 @@ sample <- function(corti, therm, bias){
   return(sample_size)
 }
 ####################
-####################
+####################  
 # Get predictions based on posteriors
 #' @title org_post
 #' @param var The response variable we are interested in ("lat", "choice", "int")
@@ -51,7 +51,7 @@ org_post <- function(var){
   data <- posteriors %>% 
     dplyr::select(contains(paste0("b_", name))) %>%
     dplyr::select(-matches("age"))
-  # Create function to extract the columns based on the test and treatment
+  # Create function to select the columns
   choose_col <- function(initial_df, test_type, temperature, hormone){
     if(test_type == "1VS4"){
       col_df_1 <- initial_df %>%
@@ -78,7 +78,7 @@ org_post <- function(var){
     }
     if(hormone == "Control"){
       col_df_final <- col_df_2
-    } else if(temperature == "CORT"){
+    } else if(hormone == "CORT"){
       col_df_final <- col_df_2 %>%
         dplyr::select(-dplyr::matches("Control")) %>%
       data.frame()

@@ -149,21 +149,21 @@ if(refit){
       model <- readRDS(file = here("output/models/model_num.rds"))
   } 
 # 
+#
+#
+#
+#| label: posteriors
+# Code to extract posteriors from the model and get predicted values
+#
 ## Extract posteriors
 posteriors <- as_draws_df(model)
 # 
 ## Get predictions for every test and treatment based on the posteriors of the model. We used the function org_post (see func.R) to get the predictions.
-source(here("R", "func.R"))
+
 ## A) Get predictions
 post_lat <- org_post("lat")
 post_choice <- org_post("choice")
 post_int <- org_post("int")
-# 
-# probabilities
-a <- exp(post_choice$X1VS4_Cold_CORT)/(1 + exp(post_choice$X1VS4_Cold_CORT))
-b <- exp(post_choice$X1VS4_Cold_Control)/(1 + exp(post_choice$X1VS4_Cold_Control))
-c <- exp(post_choice$X3VS4_Hot_CORT)/(1 + exp(post_choice$X3VS4_Hot_CORT))
-d <- exp(post_choice$X2VS4_Hot_CORT)/(1 + exp(post_choice$X2VS4_Hot_CORT))
 #
 #
 #
