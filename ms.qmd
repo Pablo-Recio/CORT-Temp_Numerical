@@ -148,22 +148,20 @@ if(refit){
       # Read the model from a file
       model <- readRDS(file = here("output/models/model_num.rds"))
   } 
-# Extract posteriors
+# 
+## Extract posteriors
 posteriors <- as_draws_df(model)
-```
-
-```{r, resultsorg}
-#| label: resultsorg
-# Get predictions for every test and treatment based on the posteriors of the model. We used the function org_post (see func.R) to get the predictions.
+# 
+## Get predictions for every test and treatment based on the posteriors of the model. We used the function org_post (see func.R) to get the predictions.
 source(here("R", "func.R"))
 ## A) Get predictions
 post_lat <- org_post("lat")
 post_choice <- org_post("choice")
 post_int <- org_post("int")
-#
-write.csv(post_lat, here("output/Checking/post_lat.csv"))
 # 
+#
 ```
+
 
 ```{r, tbl-data}
 #| label: tbl-data

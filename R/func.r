@@ -30,8 +30,12 @@ sample <- function(corti, therm, bias){
 org_post <- function(var){
   df <- data.frame() #create empty df
   sex <- unique(data_num$sex)
-  test <- unique(data_num$test_type)
-  temp <- unique(data_num$temp)
+  test <- data_num$test_type %>%
+    unique() %>%
+    levels() %>%
+    gsub(" ", "", .) %>%
+    factor()
+  therm <- unique(data_num$temp)
   horm <- unique(data_num$cort) # create the vectors employed for the loops
   # create names for each variable and each df:
   if(var == "lat"){
@@ -39,11 +43,51 @@ org_post <- function(var){
   } else if(var == "choice"){
     name <- "choice"
   } else if(var == "int"){
-    name <- comparedinterest
+    name <- "comparedinterest"
   } else{
     stop("Variable not valid")
-  } 
-  data <- posteriors %>% dplyr::select(contains(paste0("b_", name)))
+  }
+  # Modify the main df depending on the selected variable
+  data <- posteriors %>% 
+    dplyr::select(contains(paste0("b_", name))) %>%
+    dplyr::select(-matches("age"))
+  # Create function to extract the columns based on the test and treatment
+  choose_col <- function(initial_df, test_type, temperature, hormone){
+    if(test_type == "1VS4"){
+      col_df_1 <- initial_df %>%
+        dplyr::select(-dplyr::matches("1VS3|2VS4|2VS3|3VS4"))
+    } else if (test_type == "1VS3"){
+      col_df_1 <- initial_df %>%
+        dplyr::select(-dplyr::matches("2VS4|2VS3|3VS4"))
+    } else if(test_type == "2VS4"){
+      col_df_1 <- initial_df %>%
+        dplyr::select(-dplyr::matches("1VS3|2VS3|3VS4"))
+    } else if(test_type == "2VS3"){
+      col_df_1 <- initial_df %>%
+        dplyr::select(-dplyr::matches("1VS3|2VS4|3VS4"))
+    } else if(test_type == "3VS4"){
+      col_df_1 <- initial_df %>%
+        dplyr::select(-dplyr::matches("1VS3|2VS4|2VS3"))
+    }
+    if(temperature == "Hot"){
+      col_df_2 <- col_df_1
+    } else if(temperature == "Cold"){
+      col_df_2 <- col_df_1 %>%
+        dplyr::select(-dplyr::matches("Hot")) %>%
+      data.frame()
+    }
+    if(hormone == "Control"){
+      col_df_final <- col_df_2
+    } else if(temperature == "CORT"){
+      col_df_final <- col_df_2 %>%
+        dplyr::select(-dplyr::matches("Control")) %>%
+      data.frame()
+    }
+  return(col_df_final)
+  }
+  # Create empty lists for females and males
+  males <- list()
+  females <- list()
   for(i in sex){
     if(i == "m"){
       df_m <- data %>%
@@ -51,16 +95,44 @@ org_post <- function(var){
                  !!sym(paste0("b_", name, "_Intercept")) + 
                  !!sym(paste0("b_", name, "_sexm"))) %>%
         dplyr::select(-contains(paste0("b_", name, "_sexm")))
+      # Loop over test types, temperatures, and hormone levels
+      for(j in test){
+        for(k in therm){
+          for(l in horm){
+            vector_m_df <- choose_col(df_m, j, k, l)
+            vector_m <- rowSums(vector_m_df)
+            sum_vector_m <- base::sample(vector_m, size = 2500, replace = FALSE)
+            column_name_m <- paste0(j, "_", k, "_", l)
+            assign(column_name_m, sum_vector_m)
+            males[[column_name_m]] <- get(column_name_m)
+          }
+        }
+      }
     } else if(i == "f"){
       df_f <- data %>% 
         dplyr::select(-contains(paste0("b_", name, "_sexm")))
+      # Loop over test types, temperatures, and hormone levels
+      for(j in test){
+        for(k in therm){
+          for(l in horm){
+            vector_f_df <- choose_col(df_f, j, k, l)
+            vector_f <- rowSums(vector_f_df)
+            sum_vector_f <- base::sample(vector_f, size = 2500, replace = FALSE)
+            column_name_f <- paste0(j, "_", k, "_", l)
+            assign(column_name_f, sum_vector_f)
+            females[[column_name_f]] <- get(column_name_f)
+          }
+        }
+      }
     }
   }
-df <- rbind(df_m, df_f) 
+# Convert lists to data frames
+males_df <- as.data.frame(males)
+females_df <- as.data.frame(females)
+# Get final df
+df <- rbind(males_df, females_df) 
 return(df)
 }
-print(paste0("b_", name, "_Intercept"))
-print(paste0("b_", name, "sexm"))
 ####################
 ####################
 # Estimate p-values using pmcm
