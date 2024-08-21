@@ -179,3 +179,23 @@ format_p <- function(x, n) {
                 paste0("= ", as.character(z))))
   return(tmp)
 }
+####################
+####################
+# Function to organise the posteriors for the summary (Suppl) tables
+#' @title sum_table_org
+#' @param data_post the df employed
+#' @param beh the variable selected for each table ("lat", "choice", "int")
+sum_table_org <- function(data_post, beh){
+  if(beh == "lat"){
+    name_var <- "b_loglatency"
+  } else if(beh == "choice"){
+    name_var <- "b_choice"
+  } else if(beh == "int"){
+    name_var <- "b_comparedinterest"
+  } else {
+    stop("Incorrect variable")
+  }
+  data_sum <- data_post %>%
+    filter(str_detect(variable, name_var))
+return(data_sum)
+}

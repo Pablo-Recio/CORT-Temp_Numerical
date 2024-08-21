@@ -175,7 +175,7 @@ Include here general text: Results are in Table 1 and figure X.
 
 Preliminary results showed: talk about sex and age, refer to summary (prepare that), and explain how did we control by that.
 
-_Table 1. Estimates of the effects of each treatment and their interaction on the latency, choice, and interest shown for the higher amount of food in each of the numerical discrimination tests. The table shows the comparissons for each predictor and the p~mcmcm~ value of the comparissons. In bold, the estimates with p~mcmc~ < 0.05._
+_Table 1. Estimates of the effects of temperature, CORT, and their interaction on latency, choice, and interest shown for the higher amount of food in each of the numerical discrimination tests. The table shows the comparissons for each predictor and the p~mcmcm~ value of the comparissons. In bold, the estimates with p~mcmc~ < 0.05._
 ```{r, tbl-data}
 #| label: tbl-data
 #| tbl-cap: "Estimates of the effects of each treatment and their interaction on the latency, choice, and interest shown for the higher amount of food in each of the numerical discrimination tests. The table shows the comparissons for each predictor and the p~mcmcm~ value of the comparissons. In bold, the estimates with p~mcmc~ < 0.05."
@@ -209,13 +209,13 @@ for(a in variable){
     Hot_CORT <- post_mod[[paste0("X", b, "_Hot_CORT")]]
     Hot_Control <- post_mod[[paste0("X", b, "_Hot_Control")]]
     # Calculate effects and pmcmc values
-    effect_temp <- format_dec(mean(c(Hot_CORT, Hot_Control)) - mean(c(Cold_CORT, Cold_Control)), 3)
-    effect_hormone <- format_dec(mean(c(Hot_Control, Cold_Control)) - mean(c(Hot_CORT, Cold_CORT)), 3)
-    interaction <- format_dec((mean(Hot_Control) - mean(Cold_Control)) - (mean(Hot_CORT) - mean(Cold_CORT)), 3)
+    effect_temp <- format_dec(mean(c(Hot_CORT, Hot_Control)) - mean(c(Cold_CORT, Cold_Control)), 2)
+    effect_hormone <- format_dec(mean(c(Hot_Control, Cold_Control)) - mean(c(Hot_CORT, Cold_CORT)), 2)
+    interaction <- format_dec((mean(Hot_Control) - mean(Cold_Control)) - (mean(Hot_CORT) - mean(Cold_CORT)), 2)
     #
-    pmcmc_temp <- format_p(pmcmc(c(Hot_CORT, Hot_Control) - c(Cold_CORT, Cold_Control)), 3)
-    pmcmc_hormone <- format_p(pmcmc(c(Hot_Control, Cold_Control) - c(Hot_CORT, Cold_CORT)), 3)
-    pmcmc_interaction <- format_p(pmcmc((Hot_Control - Cold_Control) - (Hot_CORT - Cold_CORT)), 3)
+    pmcmc_temp <- format_p(pmcmc(c(Hot_CORT, Hot_Control) - c(Cold_CORT, Cold_Control)), 2)
+    pmcmc_hormone <- format_p(pmcmc(c(Hot_Control, Cold_Control) - c(Hot_CORT, Cold_CORT)), 2)
+    pmcmc_interaction <- format_p(pmcmc((Hot_Control - Cold_Control) - (Hot_CORT - Cold_CORT)), 2)
     # Define labels and values
     effects_predictors_names <- c("Temperature", 
                           "Hormone", 
@@ -248,17 +248,15 @@ table_df <- as.data.frame(table_df, stringsAsFactors = FALSE) %>%
 ## Table format
 set_flextable_defaults(
  font.family = "Arial",
- fint.size = 10)
-# Split the table_data df by task
+ font.size = 10,
+ layout = "autofit")
+# Create the table
 real_table <- flextable(table_df) %>%
     set_table_properties(width = 1) %>%
     align(align="center", part="all") %>% 
     add_header_row(values = c("", "Tests"), colwidths = c(2, 5)) %>%
     flextable::compose(i = c(2,3,5,6,8,9), j = 1, value = as_paragraph(""), part = "body") %>% # To remove some of the values in the first column
-    hline(i = c(3,6), j = c(1:7), part = "body") %>% # To make some horizontal lines
-    vline(i = (1:9), j = c(2:6), part = "body") %>% # To make some vertical lines on body
-    vline(i = 2, j=c(2:6), part = "header") %>% # To make some vertical lines on header
-    autofit() 
+    hline(i = c(3,6), j = c(1:7), part = "body") # To make some horizontal lines 
 real_table
 ```
 
@@ -301,11 +299,70 @@ cat("\\newpage")
 
 #### Preliminary results
 
-_Table S1.- Summary of the model_
+_Table S1.- Summary of the model fitted_
 
-```{r, tbl-summary}
-#| label: tbl-summary
-#| tbl-cap: "Summary of the model fitted to the data."
+```{r, summary_org}
+#| label: summary_org
+#
+## Get the summary of the posteriors to get the estimates of each parameter of the model
+sum <- summary(posteriors)
+## Extract the values of the summary
+sum_df <- as.data.frame(sum) %>%
+  dplyr::select(-mad) %>%
+  filter(!str_detect(variable, "^r_"))
+```
+
+For loglatency
+```{r, tbl-summary_lat}
+#| label: tbl-summary_lat
+#| tbl-cap: "Summary of the model fitted for the latency variable."
+#
+source(here("R", "func.R"))
+## Get df only for latency
+df_sum_lat <- sum_table_org(sum_df, "lat")
+## Make table
+table_sum_lat <- flextable(df_sum_lat)
+table_sum_lat
+```
+
+For choice
+```{r, tbl-summary_choice}
+#| label: tbl-summary_choice
+#| tbl-cap: "Summary of the model fitted for the choice variable."
+#
+source(here("R", "func.R"))
+## Get df only for choice
+df_sum_choice <- sum_table_org(sum_df, "choice")
+## Make table
+table_sum_choice <- flextable(df_sum_choice)
+table_sum_choice
+```
+
+For compared interest
+```{r, tbl-summary_int}
+#| label: tbl-summary_int
+#| tbl-cap: "Summary of the model fitted for the interest variable."
+#
+source(here("R", "func.R"))
+## Get df only for interest
+df_sum_int <- sum_table_org(sum_df, "int")
+## Make table
+table_sum_int <- flextable(df_sum_int)
+table_sum_int
+```
+
+Other effects
+```{r, tbl-summary_other}
+#| label: tbl-summary_other
+#| tbl-cap: "Summary of the model fitted for other effects."
+#
+source(here("R", "func.R"))
+## Get df only for interest
+df_sum_other <- sum_df %>%
+  filter(!str_detect(variable, "^b_"))
+## Make table
+table_sum_other <- flextable(df_sum_other)
+table_sum_other
 ```
 
 ```{r, results='asis', echo=FALSE}
@@ -314,10 +371,99 @@ cat("\\newpage")
 
 #### Treatments effects
 
-_Table S2.- Evaluating whether choice diff from 0.5 and interest diff from 0_
-```{r, tbl-summary}
-#| label: tbl-summary
-#| tbl-cap: "Summary of the model fitted to the data."
+_Table S2.- Estimated mean probability of choosing first the higher amount (Choice) and the mean interest for the higher amount of food (Interest) per treatment group for each of the numerical tests performed. p indicates the p~mcmcm~ value (p) of testing the hypothesis Choice ≠ 0.5, and Interest ≠ 0, which would indicate a preference towards one of choices (> towards higher amounts, < towards lower amounts) of the comparissons._
+```{r, tbl-disc}
+#| label: tbl-disc
+#| tbl-cap: "Estimated probability of choosing first the higher amount (Choice) and the interest for the higher amount of food (Interest) per treatment group for each os the tests performed. p indicates the p~mcmcm~ value of testing the hypothesis Choice ≠ 0.5, and Interest ≠ 0, which would indicate a preference towards one of choices (> towards higher amounts, < towards lower amounts) of the comparissons."
+#
+source(here("R", "func.R"))
+#
+# Making the df for each variable
+#
+## Initialize df_org as a list to store data frames for each variable
+disc_list <- list()
+## Define variables and tests
+variable <- c("Choice", "Interest")
+test <- c("1VS4", "1VS3", "2VS4", "2VS3", "3VS4")
+## Loop over each variable
+for(c in variable){
+  # Select the original df to use depending on the variable
+  if(c == "Choice"){
+    post <- prob_choice
+    val <- 0.5
+  } else if(c == "Interest"){
+    post <- post_int
+    val <- 0
+  }
+  df_disc <- data.frame()
+  for(d in test){
+    # Modify the df to get the values per each test
+    post_mod <- post %>%
+      dplyr::select(dplyr::matches(d))
+    # Extract the required columns
+    Cold_CORT <- post_mod[[paste0("X", d, "_Cold_CORT")]]
+    Cold_Control <- post_mod[[paste0("X", d, "_Cold_Control")]]
+    Hot_CORT <- post_mod[[paste0("X", d, "_Hot_CORT")]]
+    Hot_Control <- post_mod[[paste0("X", d, "_Hot_Control")]]
+    # Calculate means and pmcmc values
+    Cold_CORT_mean <- format_dec(mean(Cold_CORT), 2)
+    Cold_Control_mean <- format_dec(mean(Cold_Control), 2)
+    Hot_CORT_mean <- format_dec(mean(Hot_CORT), 2)
+    Hot_Control_mean <- format_dec(mean(Hot_Control), 2)
+    #
+    pmcmc_Cold_CORT <- format_p(pmcmc(Cold_CORT, null = val), 2)
+    pmcmc_Cold_Control <- format_p(pmcmc(Cold_Control, null = val), 2)
+    pmcmc_Hot_CORT <- format_p(pmcmc(Hot_CORT, null = val), 2)
+    pmcmc_Hot_Control <- format_p(pmcmc(Hot_Control, null = val), 2)
+    # Define labels and values
+    treatment_names <- c("Cold-CORT", "Cold-Control", "Hot-CORT", "Hot-Control")
+    values_means <- c(Cold_CORT_mean, Cold_Control_mean, Hot_CORT_mean, Hot_Control_mean)
+    values_pmcmc <- c(pmcmc_Cold_CORT, pmcmc_Cold_Control, pmcmc_Hot_CORT, pmcmc_Hot_Control)
+    # Create a temporary data frame for this loop iteration
+    temporal_df <- data.frame(Treatment = treatment_names,
+                        Effect = values_means,
+                        pmcmc = values_pmcmc,
+                        Test = d,
+                        stringsAsFactors = FALSE)
+    # Merge the temporary data frame to the main df_tables
+    df_disc <- rbind(df_disc, temporal_df)
+  }
+  df_disc$Variable <- c
+  disc_list[[c]] <- df_disc
+}
+# Combine all data frames in df_org into one data frame
+disc_df <- do.call(rbind, disc_list)
+# Convert the combined list into a data frame and modify for the table
+disc_df_final <- as.data.frame(disc_df, stringsAsFactors = FALSE) %>%
+  mutate(pmcmc = gsub("^= ", "", pmcmc)) %>%
+  pivot_wider(names_from = Test, values_from = c(Effect, pmcmc), names_prefix = "") %>%
+  dplyr::select(Variable, Treatment, 
+                Effect_1VS4, pmcmc_1VS4,
+                Effect_1VS3, pmcmc_1VS3,
+                Effect_2VS4, pmcmc_2VS4,
+                Effect_2VS3, pmcmc_2VS3,
+                Effect_3VS4, pmcmc_3VS4)
+#
+#
+# Making the table
+#
+## Table format
+set_flextable_defaults(
+ font.family = "Arial",
+ fint.size = 10)
+# Create the table
+disc_table <- flextable(disc_df_final) %>%
+    set_table_properties(width = 1) %>%
+    align(align="center", part="all") %>% 
+    add_header_row(values = c("", "1VS4", "1VS3", "2VS4", "2VS3", "3VS4"), colwidths = c(2, 2, 2, 2, 2, 2)) %>%
+    add_header_row(values = c("", "Tests"), colwidths = c(2, 10)) %>%
+    flextable::compose(i = c(2:4,6:8), j = 1, value = as_paragraph(""), part = "body") %>% # To remove some of the values in the first column
+    flextable::compose(i = 3, j = c(3,5,7,9,11), value = as_paragraph("Est. mean"), part = "head") %>% 
+    flextable::compose(i = 3, j = c(4,6,8,10,12), value = as_paragraph("p"), part = "head") %>% 
+    hline(i = 4, j = c(1:12), part = "body") %>% # To make some horizontal lines
+    vline(i = c(1:8), j = c(4,6,8,10), part = "body") %>% # To make some vertical lines
+    vline(i = c(2,3), j = c(4,6,8,10), part = "head") 
+disc_table
 ```
 
 ```{r, results='asis', echo=FALSE}
@@ -329,6 +475,7 @@ cat("\\newpage")
 _Table S3.- Number of individuals per treatment that chose the right (R) or left (L) side in each of the numerical tests. p-value indicates the result of the binomial test comparing the number of choices between sides._
 ```{r, tbl-sides}
 #| label: tbl-sides
+#| tbl-cap: "Number of individuals per treatment that chose the right (R) or left (L) side in each of the numerical tests. p-value indicates the result of the binomial test comparing the number of choices between sides."
 source(here("R", "func.R"))
 #
 # 1) MAKING THE DF FOR THE TABLE
@@ -378,7 +525,8 @@ Because we were concerned that the orientation of the crickets could affect the 
 
 _Table S4. Number of individuals per treatment that chose the cricket oriente horizontally (Horizontal) or vertically (Vertical) in our control tests. p-value indicates the result of the binomial test comparing the number of choices between both choices._
 ```{r, tbl-orientation}
-#| label: tbl-sides
+#| label: tbl-orientation
+#| tbl-cap: "Number of individuals per treatment that chose the cricket oriente horizontally (Horizontal) or vertically (Vertical) in our control tests. p-value indicates the result of the binomial test comparing the number of choices between both choices."
 source(here("R", "func.R"))
 #
 # 1) MAKING THE DF FOR THE TABLE
