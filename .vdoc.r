@@ -154,52 +154,119 @@ if(refit){
 #
 #| label: posteriors
 # Code to extract posteriors from the model and get predicted values
+source(here("R", "func.R"))
 #
 ## Extract posteriors
 posteriors <- as_draws_df(model)
 # 
 ## Get predictions for every test and treatment based on the posteriors of the model. We used the function org_post (see func.R) to get the predictions.
-
-## A) Get predictions
+#
+# Latency
 post_lat <- org_post("lat")
+# Choice
 post_choice <- org_post("choice")
+prob_choice <- exp(post_choice)/(1 + exp(post_choice))
+# Estimated interest for the higher amount of food
 post_int <- org_post("int")
 #
 #
 #
 #
+#
+#
+#
+#
+#
 #| label: tbl-data
-#| tbl-cap: "Estimates of Associative learning slope for all the different treatments per each task, species and group. Mean shows the aritmetic mean of the estimates obtained from the posteriors of the model, and 95% CI indicates the 95% confidence interval of the mean. All p-values were obtained using pmcmc and test the hypothesis that the mean is equal to zero. In bold, those values that are significant (p-value <0.05)"
+#| tbl-cap: "Estimates of the effects of each treatment and their interaction on the latency, choice, and interest shown for the higher amount of food in each of the numerical discrimination tests. The table shows the comparissons for each predictor and the p~mcmcm~ value of the comparissons. In bold, the estimates with p~mcmc~ < 0.05."
 source(here("R", "func.R"))
 #
-############################## MAKING THE TABLE ##############################
+# Making the df for each variable
+#
+## Initialize df_org as a list to store data frames for each variable
+df_org <- list()
+## Define variables and tests
+variable <- c("Latency", "Choice", "Interest")
+test <- c("1VS4", "1VS3", "2VS4", "2VS3", "3VS4")
+## Loop over each variable
+for(a in variable){
+  # Select the original df to use depending on the variable
+  if(a == "Latency"){
+    post <- post_lat
+  } else if(a == "Choice"){
+    post <- prob_choice
+  } else if(a == "Interest"){
+    post <- post_int
+  }
+  df_tables <- data.frame()
+  for(b in test){
+    # Modify the df to get the values per each test
+    post_mod <- post %>%
+      dplyr::select(dplyr::matches(b))
+    # Extract the required columns
+    Cold_CORT <- post_mod[[paste0("X", b, "_Cold_CORT")]]
+    Cold_Control <- post_mod[[paste0("X", b, "_Cold_Control")]]
+    Hot_CORT <- post_mod[[paste0("X", b, "_Hot_CORT")]]
+    Hot_Control <- post_mod[[paste0("X", b, "_Hot_Control")]]
+    # Calculate effects and pmcmc values
+    effect_temp <- format_dec(mean(c(Hot_CORT, Hot_Control)) - mean(c(Cold_CORT, Cold_Control)), 3)
+    effect_hormone <- format_dec(mean(c(Hot_Control, Cold_Control)) - mean(c(Hot_CORT, Cold_CORT)), 3)
+    interaction <- format_dec((mean(Hot_Control) - mean(Cold_Control)) - (mean(Hot_CORT) - mean(Cold_CORT)), 3)
+    #
+    pmcmc_temp <- format_p(pmcmc(c(Hot_CORT, Hot_Control) - c(Cold_CORT, Cold_Control)), 3)
+    pmcmc_hormone <- format_p(pmcmc(c(Hot_Control, Cold_Control) - c(Hot_CORT, Cold_CORT)), 3)
+    pmcmc_interaction <- format_p(pmcmc((Hot_Control - Cold_Control) - (Hot_CORT - Cold_CORT)), 3)
+    # Define labels and values
+    effects_predictors_names <- c("Temperature", 
+                          "Hormone", 
+                          "Interaction")
+    values_predictors <- c(effect_temp, effect_hormone, interaction)
+    values_pmcmc <- c(pmcmc_temp, pmcmc_hormone, pmcmc_interaction)
+    # Create a temporary data frame for this loop iteration
+    temporal_df <- data.frame(Predictor = effects_predictors_names,
+                        Effect = values_predictors,
+                        pmcmc = values_pmcmc,
+                        Test = b,
+                        stringsAsFactors = FALSE)
+    # Merge the temporary data frame to the main df_tables
+    df_tables <- rbind(df_tables, temporal_df)
+  }
+  df_tables$Variable <- a
+  df_org[[a]] <- df_tables
+}
+# Combine all data frames in df_org into one data frame
+table_df <- do.call(rbind, df_org)
+# Convert the combined list into a data frame and modify for the table
+table_df <- as.data.frame(table_df, stringsAsFactors = FALSE) %>%
+  mutate(results = paste(Effect, "(p", pmcmc, ")")) %>%
+  dplyr::select(Variable, Test, Predictor, results) %>%
+  pivot_wider(names_from = Test, values_from = c(results), names_prefix = "")
+#
+#
+# Making the table
+#
 ## Table format
 set_flextable_defaults(
- font.family = "Times New Roman",
+ font.family = "Arial",
  fint.size = 10)
 # Split the table_data df by task
-real_table <- flextable(new_table_data) %>%
-    bold(~ `p-value_Associative` < 0.05, ~ `p-value_Associative` + Mean_Associative + `95% CI_Associative`) %>%
-    bold(~ `p-value_Reversal` < 0.05, ~ `p-value_Reversal` + Mean_Reversal + `95% CI_Reversal`) %>%
+real_table <- flextable(table_df) %>%
     set_table_properties(width = 1) %>%
     align(align="center", part="all") %>% 
-    add_header_row(values = c("", "Associative task", "Reversal task"), colwidths = c(3, 3, 3)) %>%
-    set_header_labels(Mean_Associative = "Mean",
-                      `95% CI_Associative` = "95% CI",
-                      `p-value_Associative` = "p-value",
-                      Mean_Reversal = "Mean",
-                      `95% CI_Reversal` = "95% CI",
-                      `p-value_Reversal` = "p-value") %>%
-    italic(j = 1, italic = TRUE, part = "body") %>% # To have names od species in italics
-    flextable::compose(i = c(2:8,10:16), j = 1, value = as_paragraph(""), part = "body") %>% # To remove some of the values in the first column
-    flextable::compose(i = c(2:4,6:8,10:12,14:16), j = 2, value = as_paragraph(""), part = "body") %>% # To remove some of the values in the second column
-    hline(i = c(4,12), j = c(2:9), part = "body") %>% # To make some horizontal lines
-    hline(i = c(8), j = c(1:9), part = "body") %>% # To make some horizontal lines
-    vline(i = (1:16), j = c(3,6), part = "body") %>% # To make some vertical lines on body
-    vline(j=c(3,6), part = "header") %>% # To make some vertical lines on header
+    add_header_row(values = c("", "Tests"), colwidths = c(2, 5)) %>%
+    flextable::compose(i = c(2,3,5,6,8,9), j = 1, value = as_paragraph(""), part = "body") %>% # To remove some of the values in the first column
+    hline(i = c(3,6), j = c(1:7), part = "body") %>% # To make some horizontal lines
+    vline(i = (1:9), j = c(2:6), part = "body") %>% # To make some vertical lines on body
+    vline(i = 2, j=c(2:6), part = "header") %>% # To make some vertical lines on header
     autofit() 
 real_table
 #
+#
+#
+#
+#
+#| label: fig-results
+#| fig.cap: "" 
 #
 #
 #
@@ -230,6 +297,16 @@ real_table
 cat("\\newpage")
 #
 #
+#
+#
+#
+#
+#
+#
+#| label: tbl-summary
+#| tbl-cap: "Summary of the model fitted to the data. The table shows the estimates of the effects of each treatment and their interaction on the latency, choice, and interest shown for the higher amount of food in each of the numerical discrimination tests. The table shows the comparissons for each predictor and the p~mcmcm~ value of the comparissons. In bold, the estimates with p~mcmc~ < 0.05."
+```{r, results='asis', echo=FALSE}
+cat("\\newpage")
 #
 #
 #
@@ -310,7 +387,7 @@ data_or_res <- data_orient %>%
   rowwise() %>%  # Ensure that mutate works row by row
   mutate(
     total_choices = Horizontal_Count + Vertical_Count,  # Calculate total choices
-    p_value = format_dec(binom.test(Horizontal_Count, total_choices)$p.value, 2)  # Perform binom test
+    p_value = format_dec(binom.test(Horizontal_Count, total_choices)$p.value, 3)  # Perform binom test
   ) %>% # Test for differences between sides
   ungroup() %>%  # Remove rowwise grouping
   mutate(trt = recode(trt, 

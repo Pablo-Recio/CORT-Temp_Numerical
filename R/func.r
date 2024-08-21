@@ -166,3 +166,16 @@ format_dec <- function(x, n) {
   z <- sprintf(paste0("%.",n,"f"), x)
   return(as.numeric(z))
 }
+####################
+####################
+# Function to format p_values with n decimal places
+#' @title format_p
+#' @param x The object
+#' @param n The number of decimals
+format_p <- function(x, n) {
+  z <- sprintf(paste0("%.",n,"f"), x)
+  tmp <- ifelse(as.numeric(z) <= 0.001, "< 0.001",
+         ifelse(as.numeric(z) <= 0.05 & as.numeric(z) > 0.001, "< 0.05",
+                paste0("= ", as.character(z))))
+  return(tmp)
+}
