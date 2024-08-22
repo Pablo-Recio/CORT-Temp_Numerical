@@ -21,7 +21,7 @@ editor_options:
 ```{r, packages}
 #| label: packages
 pacman::p_load(tidyverse, flextable, emmeans, DHARMa, brms, here, ggplot2, lme4, zoo, lmerTest, broom, tidybayes, forcats, MASS,
-fitdistrplus, DHARMa)
+fitdistrplus, ggh4x, PupillometryR, cowplot, png, grid, remotes, ggthemes)
 ```
 
 ## Introduction  
@@ -175,10 +175,42 @@ Include here general text: Results are in Table 1 and figure X.
 
 Preliminary results showed: talk about sex and age, refer to summary (prepare that), and explain how did we control by that.
 
-_Table 1. Estimates of the effects of temperature, CORT, and their interaction on latency, choice, and interest shown for the higher amount of food in each of the numerical discrimination tests. The table shows the comparissons for each predictor and the p~mcmcm~ value of the comparissons. In bold, the estimates with p~mcmc~ < 0.05._
+```{r, fig-results}
+#| label: fig-results
+#| fig.cap: "Mean estimates of loglatency (Latency), the probability of choosing first the larger number of crickets (Choice), and the mean estimated interest for the larger number of crickets (Interest) per each of the treatments for each of the numerical tests performed. The x-axis represents the estimate, and in the y-axis are the density of the estimates. The different colours indicate the different treatments. Points and bars represent the mean and standard deviation of the mean of the estimates, respectively. Vertical dashed lines in Choice and Interest graphs indicate p = 0.5 and int = 0, respectively."
+#
+source(here("R", "func.R"))
+#
+#### A) Organise the df used for both parts of the figure for each variable
+#
+# First the df for violin plots for each variable using df_violin_plot function from func.r
+df_viol_lat <- df_violin_plot("lat")
+df_viol_choice <- df_violin_plot("choice")
+df_viol_int <- df_violin_plot("int")
+#
+# Second the df for the points and bars plot for each variable using df_bars_plot function from func.r
+df_bars_lat <- df_bars_plot("lat")
+df_bars_choice <- df_bars_plot("choice")
+df_bars_int <- df_bars_plot("int")
+#
+#### B) Make the plots for each variable using plotting function from func.r
+#
+fig_lat <- plotting("lat")
+fig_choice <- plotting("choice")
+fig_int <- plotting("int")
+#
+#### C) Combine the plots and make final figure
+fig_results <- plot_grid(fig_lat, fig_choice, fig_int, ncol = 1)
+ggsave("./output/figures/fig_results.png", plot=fig_results, width = 25, height = 25, units = "cm", dpi = 600)
+knitr::include_graphics("./output/figures/fig_results.png")
+```
+
+Results: Latency, Choice, and Interest for each test and treatment, references to fig x and Table 1. Basically, no effects of treatment on the performance of the numerical discrimination task. no discrimination either (refer to Table in Suppl. Material).
+
+_Table 1. Effects of temperature, CORT, and their interaction on latency, choice, and interest shown for the higher amount of food in each of the numerical discrimination tests. The table shows the comparissons for each predictor (Temperature = [meanHot - meanCold]; Hormone = [meanControl - meanCORT]; Interaction = [(meanHot-Control - meanHot-CORT) - (meanCold-Control - meanCold-CORT)]) and the p~mcmcm~ value of the comparisons. In bold, the effects where p~mcmc~ < 0.05._
 ```{r, tbl-data}
 #| label: tbl-data
-#| tbl-cap: "Estimates of the effects of each treatment and their interaction on the latency, choice, and interest shown for the higher amount of food in each of the numerical discrimination tests. The table shows the comparissons for each predictor and the p~mcmcm~ value of the comparissons. In bold, the estimates with p~mcmc~ < 0.05."
+#| tbl-cap: "Effects of temperature, CORT, and their interaction on latency, choice, and interest shown for the higher amount of food in each of the numerical discrimination tests. The table shows the comparissons for each predictor (Temperature = [meanHot - meanCold]; Hormone = [meanControl - meanCORT]; Interaction = [(meanHot-Control - meanHot-CORT) - (meanCold-Control - meanCold-CORT)]) and the p~mcmcm~ value of the comparisons. In bold, the effects where p~mcmc~ < 0.05."
 source(here("R", "func.R"))
 #
 # Making the df for each variable
@@ -209,9 +241,9 @@ for(a in variable){
     Hot_CORT <- post_mod[[paste0("X", b, "_Hot_CORT")]]
     Hot_Control <- post_mod[[paste0("X", b, "_Hot_Control")]]
     # Calculate effects and pmcmc values
-    effect_temp <- format_dec(mean(c(Hot_CORT, Hot_Control)) - mean(c(Cold_CORT, Cold_Control)), 2)
-    effect_hormone <- format_dec(mean(c(Hot_Control, Cold_Control)) - mean(c(Hot_CORT, Cold_CORT)), 2)
-    interaction <- format_dec((mean(Hot_Control) - mean(Cold_Control)) - (mean(Hot_CORT) - mean(Cold_CORT)), 2)
+    effect_temp <- format_dec(mean(c(Hot_CORT, Hot_Control)) - mean(c(Cold_CORT, Cold_Control)), 1)
+    effect_hormone <- format_dec(mean(c(Hot_Control, Cold_Control)) - mean(c(Hot_CORT, Cold_CORT)), 1)
+    interaction <- format_dec((mean(Hot_Control) - mean(Cold_Control)) - (mean(Hot_CORT) - mean(Cold_CORT)), 1)
     #
     pmcmc_temp <- format_p(pmcmc(c(Hot_CORT, Hot_Control) - c(Cold_CORT, Cold_Control)), 2)
     pmcmc_hormone <- format_p(pmcmc(c(Hot_Control, Cold_Control) - c(Hot_CORT, Cold_CORT)), 2)
@@ -238,7 +270,7 @@ for(a in variable){
 table_df <- do.call(rbind, df_org)
 # Convert the combined list into a data frame and modify for the table
 table_df <- as.data.frame(table_df, stringsAsFactors = FALSE) %>%
-  mutate(results = paste(Effect, "(p", pmcmc, ")")) %>%
+  mutate(results = trimws(paste0(Effect, " (p", pmcmc,")"))) %>%
   dplyr::select(Variable, Test, Predictor, results) %>%
   pivot_wider(names_from = Test, values_from = c(results), names_prefix = "")
 #
@@ -248,24 +280,17 @@ table_df <- as.data.frame(table_df, stringsAsFactors = FALSE) %>%
 ## Table format
 set_flextable_defaults(
  font.family = "Arial",
- font.size = 10,
- layout = "autofit")
+ font.size = 9)
 # Create the table
 real_table <- flextable(table_df) %>%
-    set_table_properties(width = 1) %>%
     align(align="center", part="all") %>% 
     add_header_row(values = c("", "Tests"), colwidths = c(2, 5)) %>%
     flextable::compose(i = c(2,3,5,6,8,9), j = 1, value = as_paragraph(""), part = "body") %>% # To remove some of the values in the first column
-    hline(i = c(3,6), j = c(1:7), part = "body") # To make some horizontal lines 
+    hline(i = c(3,6), j = c(1:7), part = "body") %>% # To make some horizontal lines 
+    set_table_properties(layout = "autofit", width = 1)
 real_table
 ```
 
-Results: Latency, Choice, and Interest for each test and treatment, references to fig x and Table 1. Basically, no effects of treatment on the performance of the numerical discrimination task. no discrimination either (refer to Table in Suppl. Material).
-
-```{r, fig-results}
-#| label: fig-results
-#| fig.cap: "" 
-```
 
 
 ## Discussion
@@ -297,7 +322,7 @@ cat("\\newpage")
 
 # Suplementary Material
 
-#### Preliminary results
+#### Model results
 
 _Table S1.- Summary of the model fitted_
 
@@ -307,10 +332,13 @@ _Table S1.- Summary of the model fitted_
 ## Get the summary of the posteriors to get the estimates of each parameter of the model
 sum <- summary(posteriors)
 ## Extract the values of the summary
-sum_df <- as.data.frame(sum) %>%
+sum_2 <- as.data.frame(sum) %>%
   dplyr::select(-mad) %>%
   filter(!str_detect(variable, "^r_"))
+sum_df <- sum_2 %>%
+  mutate(across(where(is.numeric), ~ sprintf(paste0("%.", 2, "f"), .)))  
 ```
+
 
 For loglatency
 ```{r, tbl-summary_lat}
@@ -325,6 +353,7 @@ table_sum_lat <- flextable(df_sum_lat)
 table_sum_lat
 ```
 
+
 For choice
 ```{r, tbl-summary_choice}
 #| label: tbl-summary_choice
@@ -338,6 +367,7 @@ table_sum_choice <- flextable(df_sum_choice)
 table_sum_choice
 ```
 
+
 For compared interest
 ```{r, tbl-summary_int}
 #| label: tbl-summary_int
@@ -350,6 +380,7 @@ df_sum_int <- sum_table_org(sum_df, "int")
 table_sum_int <- flextable(df_sum_int)
 table_sum_int
 ```
+
 
 Other effects
 ```{r, tbl-summary_other}
@@ -365,13 +396,14 @@ table_sum_other <- flextable(df_sum_other)
 table_sum_other
 ```
 
+
 ```{r, results='asis', echo=FALSE}
 cat("\\newpage")
 ```
 
 #### Treatments effects
 
-_Table S2.- Estimated mean probability of choosing first the higher amount (Choice) and the mean interest for the higher amount of food (Interest) per treatment group for each of the numerical tests performed. p indicates the p~mcmcm~ value (p) of testing the hypothesis Choice ≠ 0.5, and Interest ≠ 0, which would indicate a preference towards one of choices (> towards higher amounts, < towards lower amounts) of the comparissons._
+_Table S2.- Estimated mean probability of choosing first the higher amount (Choice) and the mean interest for the higher amount of food (Interest) per treatment group for each of the numerical tests performed. p indicates the p~mcmcm~ value (p) of testing the hypothesis Choice ≠ 0.5, and Interest ≠ 0, which would indicate a preference towards one of choices (> towards higher amounts, < towards lower amounts) of the comparissons. In bold, the groups where p~mcmcm~ < 0.05_
 ```{r, tbl-disc}
 #| label: tbl-disc
 #| tbl-cap: "Estimated probability of choosing first the higher amount (Choice) and the interest for the higher amount of food (Interest) per treatment group for each os the tests performed. p indicates the p~mcmcm~ value of testing the hypothesis Choice ≠ 0.5, and Interest ≠ 0, which would indicate a preference towards one of choices (> towards higher amounts, < towards lower amounts) of the comparissons."
@@ -436,13 +468,10 @@ disc_df <- do.call(rbind, disc_list)
 # Convert the combined list into a data frame and modify for the table
 disc_df_final <- as.data.frame(disc_df, stringsAsFactors = FALSE) %>%
   mutate(pmcmc = gsub("^= ", "", pmcmc)) %>%
-  pivot_wider(names_from = Test, values_from = c(Effect, pmcmc), names_prefix = "") %>%
-  dplyr::select(Variable, Treatment, 
-                Effect_1VS4, pmcmc_1VS4,
-                Effect_1VS3, pmcmc_1VS3,
-                Effect_2VS4, pmcmc_2VS4,
-                Effect_2VS3, pmcmc_2VS3,
-                Effect_3VS4, pmcmc_3VS4)
+  pivot_wider(names_from = Variable, values_from = c(Effect, pmcmc), names_prefix = "") %>%
+  dplyr::select(Test, Treatment, 
+                Effect_Choice, pmcmc_Choice,
+                Effect_Interest, pmcmc_Interest)
 #
 #
 # Making the table
@@ -455,14 +484,20 @@ set_flextable_defaults(
 disc_table <- flextable(disc_df_final) %>%
     set_table_properties(width = 1) %>%
     align(align="center", part="all") %>% 
-    add_header_row(values = c("", "1VS4", "1VS3", "2VS4", "2VS3", "3VS4"), colwidths = c(2, 2, 2, 2, 2, 2)) %>%
-    add_header_row(values = c("", "Tests"), colwidths = c(2, 10)) %>%
-    flextable::compose(i = c(2:4,6:8), j = 1, value = as_paragraph(""), part = "body") %>% # To remove some of the values in the first column
-    flextable::compose(i = 3, j = c(3,5,7,9,11), value = as_paragraph("Est. mean"), part = "head") %>% 
-    flextable::compose(i = 3, j = c(4,6,8,10,12), value = as_paragraph("p"), part = "head") %>% 
-    hline(i = 4, j = c(1:12), part = "body") %>% # To make some horizontal lines
-    vline(i = c(1:8), j = c(4,6,8,10), part = "body") %>% # To make some vertical lines
-    vline(i = c(2,3), j = c(4,6,8,10), part = "head") 
+    # Bold the cell containing "< 0.05" in the `pmcmc_Choice` column and the next cell
+    bold(i = which(disc_df_final$pmcmc_Choice == "< 0.05"), j = "pmcmc_Choice", part = "body") %>%
+    bold(i = which(disc_df_final$pmcmc_Choice == "< 0.05"), j = "Effect_Choice", part = "body") %>%
+    bold(i = which(disc_df_final$pmcmc_Choice == "< 0.05"), j = "Treatment", part = "body") %>%
+    # Bold the cell containing "< 0.05" in the `pmcmc_Interest` column and the next cell
+    bold(i = which(disc_df_final$pmcmc_Interest == "< 0.05"), j = "pmcmc_Interest", part = "body") %>%
+    bold(i = which(disc_df_final$pmcmc_Interest == "< 0.05"), j = "Effect_Interest", part = "body") %>%
+    bold(i = which(disc_df_final$pmcmc_Interest == "< 0.05"), j = "Treatment", part = "body") %>%
+    flextable::compose(i = c(2:4,6:8,10:12,14:16,18:20), j = 1, value = as_paragraph(""), part = "body") %>% # To remove some of the values in the first column
+    flextable::compose(i = 1, j = c(3,5), value = as_paragraph("Est. mean"), part = "head") %>% 
+    flextable::compose(i = 1, j = c(4,6), value = as_paragraph("p"), part = "head") %>% 
+    hline(i = c(4,8,12,16), j = c(1:6), part = "body") %>% # To make some horizontal lines
+    vline(i = c(1:20), j = 4, part = "body") %>% # To make some vertical lines
+    vline(i = 1, j = 4, part = "head") 
 disc_table
 ```
 
@@ -472,7 +507,7 @@ cat("\\newpage")
 
 #### Testing potential side biases
 
-_Table S3.- Number of individuals per treatment that chose the right (R) or left (L) side in each of the numerical tests. p-value indicates the result of the binomial test comparing the number of choices between sides._
+_Table S3.- Number of individuals per treatment that chose the right (R) or left (L) side in each of the numerical tests. p-value indicates the result of the binomial test comparing the number of choices between sides. In bold, the groups where p-value < 0.05_
 ```{r, tbl-sides}
 #| label: tbl-sides
 #| tbl-cap: "Number of individuals per treatment that chose the right (R) or left (L) side in each of the numerical tests. p-value indicates the result of the binomial test comparing the number of choices between sides."
