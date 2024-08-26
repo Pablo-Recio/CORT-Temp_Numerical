@@ -3,26 +3,6 @@
 pacman::p_load(tidyverse, flextable, emmeans, DHARMa, brms, here, ggplot2, lme4, zoo, lmerTest, broom, tidybayes)
 #
 ####################
-####################
-# Extract sample size per group
-#' @title sample
-#' @description Estract sample size per group
-#' @param corti To select cort treatment ("CORT"/"Control")
-#' @param therm To select temp treatment ("Cold"/"Hot")
-#' @param bias To select the side selected first ("Left"/"Right")
-sample <- function(corti, therm, bias){
-  #Specify database
-  data <- data_num
-  # Count sample
-  sample_size <- data %>%
-                filter(cort == corti, temp == therm, side_choice == bias, test_type == "1 VS 4") %>%
-                group_by(lizard_id) %>%
-                summarise(n = n()) %>%
-                summarise(total_count = sum(n)) %>%
-                pull(total_count)
-  return(sample_size)
-}
-####################
 ####################  
 # Get predictions based on posteriors
 #' @title org_post
@@ -101,7 +81,7 @@ org_post <- function(var){
           for(l in horm){
             vector_m_df <- choose_col(df_m, j, k, l)
             vector_m <- rowSums(vector_m_df)
-            sum_vector_m <- base::sample(vector_m, size = 2500, replace = FALSE)
+            sum_vector_m <- base::sample(vector_m, size = 6000, replace = FALSE)
             column_name_m <- paste0(j, "_", k, "_", l)
             assign(column_name_m, sum_vector_m)
             males[[column_name_m]] <- get(column_name_m)
@@ -117,7 +97,7 @@ org_post <- function(var){
           for(l in horm){
             vector_f_df <- choose_col(df_f, j, k, l)
             vector_f <- rowSums(vector_f_df)
-            sum_vector_f <- base::sample(vector_f, size = 2500, replace = FALSE)
+            sum_vector_f <- base::sample(vector_f, size = 6000, replace = FALSE)
             column_name_f <- paste0(j, "_", k, "_", l)
             assign(column_name_f, sum_vector_f)
             females[[column_name_f]] <- get(column_name_f)
