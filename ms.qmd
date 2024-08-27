@@ -191,7 +191,7 @@ knitr::include_graphics("./output/figures/fig_results.png")
 
 Temperature, CORT, or their interaction contrasts did not yield any significant result in any of the numerical tests (Table 1) and we did not observe any clear pattern indicating relevant effects of early environment on any of the tests (@fig-results). Except for Hot-CORT lizards in 1 VS 3 tests or Cold-Control lizards in 2 VS 4 tests, the predicted probability of choosing the greater number of crickets first was not different from 0.5 (@fig-results; but also see Table S2 in Supplementary Material). Similarly, the predicted interest for the larger number of crickets was not different from 0 in any of the tests (@fig-results; but also see Table S2 in Supplementary Material).  
 
-_Table 1. Effects of temperature, CORT, and their interaction on latency, choice, and interest shown for the higher amount of food in each of the numerical discrimination tests. The table shows the comparissons for each predictor (Temperature = [meanHot - meanCold]; Hormone = [meanControl - meanCORT]; Interaction = [(meanHot-Control - meanHot-CORT) - (meanCold-Control - meanCold-CORT)]) and the p~mcmcm~ value of the comparisons. In bold, the effects where p~mcmc~ < 0.05._
+_Table 1. Effects of temperature, CORT, and their interaction on latency, choice, and interest shown for the higher amount of food in each of the numerical discrimination tests. The table shows the comparissons for each predictor (Temperature = [meanHot - meanCold]; Hormone = [meanControl - meanCORT]; Interaction = [(meanHot-Control - meanHot-CORT) - (meanCold-Control - meanCold-CORT)]) and the p~mcmc~ value of the comparisons. In bold, the effects where p~mcmc~ < 0.05._
 ```{r, tbl-data}
 #| label: tbl-data
 #| tbl-cap: "Effects of temperature, CORT, and their interaction on latency, choice, and interest shown for the higher amount of food in each of the numerical discrimination tests. The table shows the comparissons for each predictor (Temperature = [meanHot - meanCold]; Hormone = [meanControl - meanCORT]; Interaction = [(meanHot-Control - meanHot-CORT) - (meanCold-Control - meanCold-CORT)]) and the p~mcmcm~ value of the comparisons. In bold, the effects where p~mcmc~ < 0.05."
@@ -291,6 +291,24 @@ In this context, it is important to consider that both GCs and thermal environme
 
 In conclusion, our study is, to the best of our knowledge, the first to explore the impact of prenatal conditions on numerical abilities in reptiles. Our findings suggest that _L. guichenoti_ does not rely on numerical information for foraging decisions and that their performance does not vary across different prenatal treatments. This implies that early environmental conditions, such as incubation temperature and CORT exposure, may not affect numerosity in this species. However, it is critical to note that the methodologies employed in this study may not have fully captured the nuances of numerical cognition in _L. guichenoti_. Therefore, we recommend that future studies employ a broader array of tests and paradigms, including training-based tasks, larger sets of stimuli, and other sensory modalities, to more comprehensively assess numerical competence in this and related species. Such work will be pivotal in unraveling the effects of early environmental factors on cognitive abilities in reptiles and advancing our understanding of numerosity across taxa.  
 
+## Data accessibility  
+All data, data description, and R code are available in public repository [https://github.com/Pablo-Recio/CORT-Temp_Numerical](https://github.com/Pablo-Recio/CORT-Temp_Numerical).  
+
+## Declaration of AI use  
+We declare Chat GPT was used for questions related to coding and data analyses. All other parts of the manuscript were written by the authors and those parts where AI was used were checked and modified accordingly by the authors.  
+
+## Authors' contributions  
+P.R.: conceptualization, methodology, data collection, data curation, formal analysis, writing—original draft, writing—review and editing; D.C.L.: data collection, writing—review and editing; O.C.: conceptualization, writing—review and editing; C.F.: conceptualization, funding acquisition, writing—review and editing; A.Y.P.: data collection, writing—review and editing; D.N.: conceptualization, methodology, funding acquisition, project administration, resources, supervision, writing—review and editing.  
+All authors gave final approval for publication and agreed to be held accountable for the work performed therein.  
+
+## Conflict of interest declaration  
+We declare we have no competing interests.  
+
+## Funding  
+This work was supported by a National Australian University fellowship (P.R.), and the Australian Research Council (grant no. DP210101152) to D.N. and C.F.  
+
+## Acknowledgements  
+We thank the help and assistance of our lab technicians Benjamin Durant and Michelle Stephens for taking care of the lizards. We are also grateful ANU MakerSpace, where we designed and built the prototypes of the 3D-printed platforms. Finally, we wish to acknowledge the anonymous reviewers for their valuable feedback on the manuscript.  
 
 ## References
 <div id="refs"></div>
