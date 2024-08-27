@@ -1,9 +1,9 @@
 ---
 title: "The effects of prenatal corticosterone and thermal environment on numerical discrimination abilities in a lizard"
 docx: 
+  reference-doc: "./bib/tmpl.docx"
 bibliography: "./bib/refs.bib"
 csl: "./bib/behavioral-ecology-and-sociobiology.csl"
-reference-doc: "./bib/tmpl.docx"
 execute:
   echo: false
   error: false
@@ -32,11 +32,27 @@ Pablo Recio^1^,$\ddagger$ , Dalton C. Leibold^1^, Ondi L. Crino ^1,2^, Chris Fri
 ^3^ University of Wollongong, Wollongong, NSW 2500, Australia  
 $\ddagger$ Corresponding author: pablo.reciosantiago@anu.edu.au  
 
-## Abstract
+ORCID:
 
+Pablo Recio ORCID: 0000-0002-5890-0218  
+Dalton C. Leibold ORCID: 0000-0001-9645-2033  
+Ondi L. Crino ORCID: 0000-0001-5700-1387  
+Chris Friesen ORCID: 0000-0001-5338-7454  
+Amelia Y. Peardon ORCID: 0009-0005-6227-8379  
+Daniel W.A. Noble ORCID: 0000-0001-9460-8743
+
+```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## Keywords
+Numerical discrimination, Corticosterone, Temperature, Reptiles, Early life stress, Cognitive abilities 
+
+## Abstract
+Animals use quantitative judgements in several ecological contexts. From social behaviour to navigating their own environment, quantitative abilities can be crucial in animals' behaviour. Since prenatal conditions are predicted to impact brain development, quantitative competence may be as well affected by the early environment. Factors like temperature or stress-related hormones transmitted by the parents can play a prominent role in shaping cognitive traits. In adition, abrupt temperature changes can lead to the transmittion of stress-related hormones to the offspring, making essential to study the combined effects of stress hormones and thermal conditions during development. Here, we investigated the effects of prenatal corticosterone (CORT) and temperature on numerical discrimination in the Common garden skink (_Lampropholis guichenoti_). We manipulated CORT levels and incubation temperature of eggs employing a 2x2 factorial design, and then assessed numerousness through a spontaneous choice test with food as the relevant stimulus. Animals were subjected to five different tests with differen number of items and ratios (1 VS 4, 1 VS 3, 2 VS 4, 2 VS 3, 2 VS 4) in a repeated measures design. We hypothesized that CORT exposure and cold temperatures would constraint performance in the numerical task. Contrary to our expectations, we did not find any evidence of numerical discrimination for any of the treatments. These findings suggest that _L. guichenoti_ may not use numerical cues to make foraging decisions, and that early conditions does not affect their behaviour towards different quantities of food.  
 
 ## Significant statement
-
+Discriminating between quantities is crucial for animal behaviour, yet the impact of early environmental factors on the development of quantitative competence remains largely unexplored. In this study, we investigated for the first time the effects of prenatal corticosterone exposure and incubation temperature on numerical discrimination in a reptile. Contrary to our predictions, we did not observe any evidence of numerical discrimination regardless of incubation conditions. Our results align with previous studies showing that reptiles consuming live prey struggle to differentiate prey numbers in spontaneous choice tests. These results open new avenues for exploring the evolution of numerical abilities in reptiles and identifying factors influencing the development of quantitative skills in this group. Further research should explore alternative methods, such as trained tasks, to better understand the cognitive mechanisms underlying numerical competence in reptiles.  
 
 ## Introduction  
 The ability to discern between more and fewer quantities is a basic cognitive skill widely observed across the animal kingdom [@stancher2015numerical; @vonk2012bears; @beran2016capuchin]. It is considered adaptive in various ecological contexts, contributing to behaviors such as social decisions, mate selection, or foraging [@lucon2017individual; @nieder2018evolution]. For instance, female lions (_Panthera leo_) use numerical information to assess the risk of confronting rival groups [@mccomb1994roaring], while other animals use these abilities for navigating their environment [@chittka1995can], locate potential mates [@carazo2009quantity], or to make optimal foraging decisions [@uller2003salamanders]. Given the adaptive advantages of numerical and quantity discrimination, research has extensively explored the ability of different species to differentiate between quantities under different contexts and paradigmas.  
@@ -77,7 +93,7 @@ All tests were done between 10 and 12 in the morning when the lizards were most 
 
 ```{r, fig-Methods}
 #| label: fig-Methods
-#| fig.cap: "Experimental design of early environment manipulation (**A**), numerical discrimination arena an measures(**B**), measures of the platform used for the experiments (**C**), and types of numerical trial (**D**), where each line indicates the position and orientation of the food items in each test."
+#| fig.cap: "Experimental design of the study. Panel (**A**) shows the early environment manipulation procedures. (**B**) illustrates the arena where the tests were performed, while panel (**C**) indicates the measurements of the platform used for the experiments. Finally, panel (**D**) displays the types of numerical tests used and the orientation of the crickets in each test."
 
 knitr::include_graphics("./Others/NUMDIS_FIG_1.png")
 
@@ -145,7 +161,7 @@ Our results showed an effect of sex and age on Latency (mean estimated effect of
 
 ```{r, fig-results}
 #| label: fig-results
-#| fig.cap: "Mean estimates of loglatency (Latency), the probability of choosing first the larger number of crickets (Choice), and the mean estimated interest for the larger number of crickets (Interest) per each of the treatments for each of the numerical tests performed. The x-axis represents the estimate, and in the y-axis are the density of the estimates. The different colours indicate the different treatments. Points and bars represent the mean and standard deviation of the mean of the estimates, respectively. Vertical dashed lines in Choice and Interest graphs indicate p = 0.5 and int = 0, respectively."
+#| fig.cap: "Mean estimates of loglatency (Latency), the probability of choosing first the larger number of crickets (Choice), and the estimated interest for the larger number of crickets (Interest) per each of the treatments for each of the numerical tests performed. The x-axis represents the estimate, and in the y-axis are the density of the estimates. The different colours indicate the different treatments. Points and bars represent the mean and standard deviation of the mean of the estimates, respectively. Vertical dashed lines in Choice and Interest graphs values 0.5 and 0, respectively."
 #
 source(here("R", "func.R"))
 #
