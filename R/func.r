@@ -270,10 +270,10 @@ plotting <- function(type_var){
   # Plot the predicted estimates for each treatment and test
   plot <- ggplot(df_violin, aes(x = Treatment, y = Estimate, fill = Treatment)) +
   geom_flat_violin(alpha = 0.6) + 
-  scale_fill_manual(values = c("Cold-CORT (n = 20)" = "#68bde1",
-                              "Cold-Control (n = 20)" = "darkblue",
-                              "Hot-CORT (n = 20)" = "#fa927d",
-                              "Hot-Control (n = 20)" = "#b50101"),
+  scale_fill_manual(values = c("Cold-CORT (n = 20)" = "#00008B",
+                              "Cold-Control (n = 20)" = "#68bde1",
+                              "Hot-CORT (n = 20)" = "#b50101",
+                              "Hot-Control (n = 20)" = "#fa927d"),
                     breaks = c("Hot-Control (n = 20)",
                               "Hot-CORT (n = 20)",
                               "Cold-Control (n = 20)",
