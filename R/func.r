@@ -115,6 +115,17 @@ return(df)
 }
 ####################
 ####################
+# Function to check normality using Anderson-Darling normality test
+check_normality <- function(data_frame) {
+  results <- list()  # Create a list to store results
+  for (col in names(data_frame)) {
+    normality_test <- ad.test(data_frame[[col]])  # Perform Shapiro-Wilk test
+    results[[col]] <- normality_test$p.value  # Store the p-value
+  }
+  return(results)  # Return the results
+}
+####################
+####################
 # Estimate p-values using pmcm
 #' @title pMCMC Function
 #' @param x The vector for the posterior distribution. Note that this will test the null hypothesis that the parameter of interest is significantly different from 0. 
@@ -248,8 +259,9 @@ df_bars_plot <- function(data_fig){
   # Modify the df for the bar plots
   df_bars_plot <- fig_df_2 %>%
     group_by(Test, Treatment) %>%
-    summarize(mean_estimate = mean(Estimate, na.rm = TRUE),
-              sd_estimate = sd(Estimate, na.rm = TRUE)) %>%
+    summarize(median_estimate = median(Estimate, na.rm = TRUE),
+              low_lim = hdi(Estimate, credMass = 0.95)[1],
+              up_lim = hdi(Estimate, credMass = 0.95)[2]) %>%
     ungroup()
   data.frame()
 #
@@ -279,9 +291,9 @@ plotting <- function(type_var){
                               "Cold-Control (n = 20)",
                               "Cold-CORT (n = 20)")) +
   facet_wrap(~ Test, scales = "free_x", nrow = 1) +  # Facet by Treatment
-  geom_point(data = df_points, aes(y = mean_estimate, x = Treatment), position = position_dodge(width = 0.75), 
+  geom_point(data = df_points, aes(y = median_estimate, x = Treatment), position = position_dodge(width = 0.75), 
               color = "black", fill = "black", size = 3) +
-  geom_segment(data = df_points, aes(y = mean_estimate - sd_estimate, yend = mean_estimate + sd_estimate, 
+  geom_segment(data = df_points, aes(y = low_lim, yend = up_lim, 
                 x = Treatment, xend = Treatment), size = 1.5, color = "black") +
   ylim(min(df_violin$Estimate), max(df_violin$Estimate)) +
   coord_flip() +
