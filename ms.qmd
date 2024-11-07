@@ -1,5 +1,5 @@
 ---
-title: "Early environment and numerical discrimination in a lizard"
+title: "Do early environmental experiences impact numerical discrimination abilities in a lizard?"
 docx: 
   reference-doc: "./bib/tmpl.docx"
 bibliography: "./bib/refs.bib"
@@ -48,39 +48,39 @@ cat("\\newpage")
 Numerical discrimination, Corticosterone, Temperature, Reptiles, Early life stress, Cognitive abilities 
 
 ## Abstract
-From social behaviour to navigating their environment, quantitative abilities can be crucial to fitness. Early life conditions can impact brain development affecting quantitative competence. In anthropogenically modified environments, early thermal conditions or glucocorticoid concentrations (GCs) – stress-related hormones transmitted by the parents – can play a prominent role in shaping cognition through their effects on brain physiology. Furthermore, temperature can lead to increased levels of GCs that are passed on to offspring, emphasizing the need to study the combined effects of these two factors. Here, we investigated the effects of elevated prenatal corticosterone (CORT) – the main GC in reptiles – and incubation temperature on numerical discrimination in the common garden skink (_Lampropholis guichenoti_). We then assessed numerical abilities through a spontaneous choice test with food as the relevant stimulus. Employing a repeated measures design, we subjected lizards to five numerical tests each differing in the ratios between the two choices (1 VS 4, 1 VS 3, 2 VS 4, 2 VS 3, 2 VS 4). Contrary to our expectations, we found no evidence of numerical discrimination or any effect of treatments on lizard behaviour. These findings suggest that _L. guichenoti_ may not use numerical cues to make foraging decisions. Our findings align with previous studies indicating that reptiles feeding on live prey may have difficulty distinguishing between different prey quantities in spontaneous choice tests.      
+From social behaviour to navigating complex environments, quantitative abilities can be crucial to fitness. Early life conditions can impact brain development to affect quantitative competence. In anthropogenically modified environments, early thermal conditions or glucocorticoid concentrations (GCs) – stress-related hormones transmitted by the parents – can play a prominent role in shaping cognition through their effects on brain physiology. Furthermore, temperature can lead to increased levels of GCs that are passed on to offspring, emphasizing the need to study the combined effects of these two factors. Here, we investigated the effects of elevated prenatal corticosterone (CORT) – the main GC in reptiles – and incubation temperature on numerical discrimination in the common garden skink (_Lampropholis guichenoti_). We then assessed numerical abilities through a spontaneous choice test with food as the relevant stimulus. Employing a repeated measures design, we subjected lizards to five numerical tests each differing in the ratios between the two choices (1 VS 4, 1 VS 3, 2 VS 4, 2 VS 3, 2 VS 4). Contrary to our expectations, we found no evidence for treatment effects on lizard behaviour and no use of numerical discrimination during foraging in _L. guichenoti_. Our findings align with previous studies indicating that reptiles feeding on live prey may have difficulty distinguishing between different prey quantities in spontaneous choice tests.      
 
 ## Significance statement
 Discriminating between quantities can be crucial for individual fitness, yet the impact of early environmental factors on the development of quantitative competence remains largely unexplored. In this study, we investigated, for the first time, the effects of prenatal corticosterone exposure and incubation temperature on numerical discrimination in a reptile. Contrary to our predictions, we did not observe any evidence of numerical discrimination and therefore no impact of early developmental environment. Our results align with previous studies showing that reptiles consuming live prey struggle to differentiate prey numbers in spontaneous choice tests. These results open new avenues for exploring the evolution of numerical abilities in reptiles and identifying factors influencing the development of quantitative skills in this group. Further research should explore alternative methods, such as trained tasks, to better understand the cognitive mechanisms underlying quantitative competence in reptiles.  
 
 ## Introduction  
-The ability to discern between quantities is a fundamental cognitive skill widely observed across the animal kingdom [@stancher2015numerical; @vonk2012bears; @beran2016capuchin]. Numerical cognition can contribute to social decisions, mate selection, and foraging and thus is adaptive in various ecological contexts [@lucon2017individual; @nieder2018evolution]. For instance, female lions (_Panthera leo_) use numerical information to assess the risk of confronting rival groups [@mccomb1994roaring], male adult mealworms (_Tenebrio molitor_) select sites with scents of more females [@carazo2009quantity], and red-backed salamanders (_Plethodon cinereus_) prefer tubes containing larger numbers of prey [@uller2003salamanders]. Given the adaptive advantages of numerical and quantity discrimination, research has extensively has focused on exploring the ability of different species to differentiate between quantities under different contexts and paradigms.  
+The ability to discern between quantities is a fundamental cognitive skill widely observed across the animal kingdom [@stancher2015numerical; @vonk2012bears; @beran2016capuchin]. Numerical cognition can contribute to social decisions, mate selection, and foraging behaviour, which can be adaptive in various ecological contexts [@lucon2017individual; @nieder2018evolution]. For instance, female lions (_Panthera leo_) use numerical information to assess the risk of confronting rival groups [@mccomb1994roaring], male adult mealworms (_Tenebrio molitor_) select sites with scents of more females [@carazo2009quantity], and red-backed salamanders (_Plethodon cinereus_) prefer tubes containing larger numbers of prey [@uller2003salamanders]. Given the adaptive advantages of numerical and quantity discrimination, research has focused extensively on exploring the ability of different species to differentiate between quantities under different contexts and paradigms.  
 
-Numerical competence is often evaluated by considering the types of cues animals use [@plotnik2019elephants; @cooper2024tell], the ecological contexts in which these abilities are deployed [@mccomb1994roaring; @chittka1995can; @uller2003salamanders; @carazo2009quantity], and the neural mechanisms that underlie them [@nieder2005counting]. The latter have demonstrated that non-verbal numerical representations in mammals activates an extensive neural pathway including regions involved in eye movement, attention control, or complex learning [@nieder2005counting]. This connection between numerosity and brain physiology underscores the importance of understanding how brain development influences numerical abilities.  
+Numerical competence is often evaluated by considering the types of cues animals use [@plotnik2019elephants; @cooper2024tell], the ecological contexts in which these abilities are deployed [@mccomb1994roaring; @chittka1995can; @uller2003salamanders; @carazo2009quantity], and the neural mechanisms that underlie them [@nieder2005counting]. The latter have demonstrated that non-verbal numerical representations in mammals activates an extensive neural pathway including regions involved in eye movement, attention control, or complex learning [@nieder2005counting]. The connection between numerosity and brain physiology underscores the importance of understanding how brain development influences numerical abilities.  
 
-Brains are particularly sensitive to environmental inputs during early stages of development [@coomber_independent_1997; @zhu_prenatal_2004], with long-lasting effects on cognitive abilities [@zhu_prenatal_2004; @amiel_egg_2014]. For instance, glucocorticoids (GCs), steroid hormones that mediate the physiological stress response [@sapolsky_how_2000], can alter animals' performance in spatial, associative, or reversal learning tasks if elevated during early stages of development [@szuran_water_1994; @zhu_prenatal_2004; @crino_corticosterone_2014-learn; @farrell_developmental_2015-learn; @bebus_associative_2016; @lui2017chronic]. Prenatal exposure to GCs is typically associated with impaired learning skills, but these effects have been shown to vary depending on factors such as dose, sex, or type of cognitive test employed [@szuran_water_1994; @farrell_developmental_2015-learn; @bebus_associative_2016; @haq_prenatal_2021]. Nevertheless, little is known about how exposure to GCs during development can affect quantitative abilities. 
+Brains are particularly sensitive to environmental inputs during early stages of development [@coomber_independent_1997; @zhu_prenatal_2004], with long-lasting effects on cognitive abilities [@zhu_prenatal_2004; @amiel_egg_2014]. For instance, glucocorticoids (GCs), steroid hormones that mediate the physiological stress response [@sapolsky_how_2000], can alter performance in spatial, associative, or reversal learning tasks if elevated during early stages of development [@szuran_water_1994; @zhu_prenatal_2004; @crino_corticosterone_2014-learn; @farrell_developmental_2015-learn; @bebus_associative_2016; @lui2017chronic]. In ectotherms, temperature can affect GC levels in parents to affect developing offspring (i.e., maternal effects [@jessop2016multiscale; @racic_effects_2020; @mentesana2022glucocorticoids; @Crino_2023]. Prenatal exposure to GCs is typically associated with impaired learning skills, but these effects have been shown to vary depending on factors such as dose, sex, or type of cognitive test employed [@szuran_water_1994; @farrell_developmental_2015-learn; @bebus_associative_2016; @haq_prenatal_2021]. Nevertheless, little is known about how exposure to GCs during development can affect quantitative abilities. 
 
-The effects of prenatal GCs on learning may be modulated by other developmental effects or environmental conditions. For example, the early thermal environment plays a prominent role in brain development and cognitive abilities in ectotherms [@coomber_independent_1997;@amiel_hotter_2012; @amiel_egg_2014; @clark_colour_2014; @amiel_effects_2017; @vila_pouca_incubation_2018; @vila_pouca_quantity_2019]. In lizards, incubating eggs at elevated temperatures improves cognitive abilities consistent with elevated neuronal density in some areas of the brain [@amiel_hotter_2012; @amiel_egg_2014; @clark_colour_2014; @amiel_effects_2017], but impairs cognition at temperatures above lizards’ natural incubation thermal range [@dayananda_incubation_2017; @abayarathna_effects_2020]. In addition, when @vila_pouca_quantity_2019 tested the effects of elevated incubation temperature on numerical discrimination in  Port-Jackson sharks (_Heterodontus portusjacksoni_), they found that sharks incubated at elevated temperatures learned faster in a quantity discrimination task [@vila_pouca_quantity_2019]. However, the effects of early thermal environment on numerical abilities in other taxa remains largely unexplored.  
+The effects of prenatal GCs on learning may be modulated by other developmental effects or environmental conditions. For example, the early thermal environment plays a prominent role in brain development and cognitive abilities in ectotherms [@coomber_independent_1997;@amiel_hotter_2012; @amiel_egg_2014; @clark_colour_2014; @amiel_effects_2017; @vila_pouca_incubation_2018; @vila_pouca_quantity_2019]. In lizards, incubating eggs at elevated temperatures improves cognitive abilities consistent with elevated neuronal density in some areas of the brain [@amiel_hotter_2012; @amiel_egg_2014; @clark_colour_2014; @amiel_effects_2017], but impairs cognition at extreme temperatures [@dayananda_incubation_2017; @abayarathna_effects_2020]. In addition, when @vila_pouca_quantity_2019 tested the effects of elevated incubation temperature on numerical discrimination in  Port-Jackson sharks (_Heterodontus portusjacksoni_) and found that sharks incubated at elevated temperatures learned faster in a quantity discrimination task [@vila_pouca_quantity_2019]. However, the effects of early thermal environment on numerical abilities in other taxa remains largely unexplored.  
 
-Temperature can affect GC levels in vertebrates and can indirectly affect developing offspring through maternal effects [@jessop2016multiscale; @racic_effects_2020; @mentesana2022glucocorticoids; @Crino_2023]. Early-life GCs and thermal conditions could have interactive effects that influence cognitive development. Understanding how these factors influence quantitative abilities could reveal important insights into the ecological relevance of numerosity. To fill this gap, we used the common garden skink (_Lampropholis guichenoti_) as a model to test the effects of elevated prenatal corticosterone (CORT) - the main GC in reptiles [@Crino_2023] - and incubation temperature on numerical discrimination abilities. However, the combined influence of prenatal CORT and thermal environment on cognition remains unknown, particularly on numerical abilities.   
-
-Given the influence of numerical cognition on fitness, we would expect evolutionary pressures to be similar across taxa, and yet, research on numerical discrimination has been traditionally focused on mammals, birds, and fishes [@nieder2005counting; @agrillo2014spontaneous]. However, recent studies demonstrate that reptiles are also competent in numbers. For example, red-footed turtles (_Chelonoidis carbonaria_) rapidly learned to associate colour with higher volumes of food [@soldati2017long], Hermann’s tortoises (_Testudo hermanni_) discriminate between large and small food quantities in a spontaneous choice test [@gazzola2018continuous], and freshwater turtles (_Trachemys scripta_ and _Mauremys sinensis_) rapidly learned a quantity discrimination task [@lin2021superior; @lin2024trained]. The italian wall lizard (_Podarcis siculus_) failed to discriminate between different numbers of food items in a spontaneous choice test [@miletto2017quantitative], but succeeded in a trained quantity discrimination task [@miletto2018quantity]. In contrast, Iberian rock lizards (_Iberolacerta cyreni_) preferred larger quantities of crickets when presented five versus ten items [@recio_prey_2021]. Indeed, the literature shows evidence for basic quantitative abilities in reptiles that may vary with the type of cue and the test employed.  
+Early-life GCs and thermal conditions could have interactive effects that influence cognitive development. Understanding how these factors influence quantitative abilities could reveal important insights into the ecological relevance of numerosity. Given the influence of numerical cognition on fitness, we would expect evolutionary pressures to be similar across taxa, and yet, research on numerical discrimination has been traditionally focused on mammals, birds, and fishes [@nieder2005counting; @agrillo2014spontaneous]. However, recent studies demonstrate that reptiles are also competent in numbers. For example, red-footed turtles (_Chelonoidis carbonaria_) rapidly learned to associate colour with higher volumes of food [@soldati2017long], Hermann’s tortoises (_Testudo hermanni_) discriminate between large and small food quantities in a spontaneous choice test [@gazzola2018continuous], and freshwater turtles (_Trachemys scripta_ and _Mauremys sinensis_) rapidly learned a quantity discrimination task [@lin2021superior; @lin2024trained]. The italian wall lizard (_Podarcis siculus_) failed to discriminate between different numbers of food items in a spontaneous choice test [@miletto2017quantitative], but succeeded in a trained quantity discrimination task [@miletto2018quantity]. In contrast, Iberian rock lizards (_Iberolacerta cyreni_) preferred larger quantities of crickets when presented five versus ten items [@recio_prey_2021]. Indeed, the literature shows evidence for basic quantitative abilities in reptiles that may vary with the type of cue and the test employed.  
    
-Here, we investigated the effect of prenatal CORT and incubation temeprature on numerical discrimination in a lizard. We manipulated CORT concentration (CORT-treated or a sham control) in _L. guichenoti_ eggs and incubated them under one of two temperature regimes (Cold - 23 ± 3ºC or Hot - 28 ± 3ºC) in a 2x2 factorial design. Then, we assessed numerical discrimination abilities of lizards unsing a spontaneous choice test approach. The numerical discrimination task consisted of five tests that differed in the relative number of food items: 1 VS 4, 1 VS 3, 2 VS 4, 2 VS 3, 3 VS 4 crickets. We based this experiment on observations in nature that the ability to detect a change in stimulus intensity depends on the relative, not absolute, difference between the stimuli ['Weber's law'; @agrillo2014spontaneous]. Built upon other studies that explored the cognitive effects of prenatal GCs or thermal early environment in reptiles and other taxa, we hypothesized that lizards incubated at higher temperatures would outperform those incubated at lower temperatures in the numerical discrimination task [@amiel_hotter_2012; @amiel_egg_2014; @clark_colour_2014; @amiel_effects_2017; @vila_pouca_quantity_2019]. We predicted that increased CORT levels would impair numerical competence [@szuran_water_1994; @zhu_prenatal_2004], with more pronounced effects at lower temperatures. Consistent with Weber's law, we predicted that lizards incubated at higher temperatures would successfully discriminate between quantities even at high ratios (e.g. 3 VS 4), whereas even the lowest ratios (e.g. 1 VS 4) could be challenging for those exposed to CORT or incubated at lower temperatures.  
+Here, we investigated the effect of prenatal corticosterone (CORT) - the main GC in reptiles - and incubation temperature on numerical discrimination in a lizard. We manipulated CORT concentration (CORT-treated or a sham control) in _L. guichenoti_ eggs and incubated them under one of two temperature regimes (Cold - 23 ± 3ºC or Hot - 28 ± 3ºC) in a 2x2 factorial design. Then, we assessed numerical discrimination abilities of lizards unsing a spontaneous choice test approach. The numerical discrimination task consisted of five tests that differed in the relative number of food items: 1 VS 4, 1 VS 3, 2 VS 4, 2 VS 3, 3 VS 4 crickets. We based this experiment on observations in nature that the ability to detect a change in stimulus intensity depends on the relative, not absolute, difference between the stimuli ['Weber's law'; @agrillo2014spontaneous]. Built upon other studies that explored the cognitive effects of prenatal GCs or thermal early environment in reptiles and other taxa, we hypothesized that lizards incubated at higher temperatures would outperform those incubated at lower temperatures in the numerical discrimination task [@amiel_hotter_2012; @amiel_egg_2014; @clark_colour_2014; @amiel_effects_2017; @vila_pouca_quantity_2019]. We predicted that increased CORT levels would impair numerical competence [@szuran_water_1994; @zhu_prenatal_2004], with more pronounced effects at lower temperatures. Consistent with Weber's law, we predicted that lizards incubated at higher temperatures would successfully discriminate between quantities even at high ratios (e.g. 3 VS 4), whereas even the lowest ratios (e.g. 1 VS 4) could be challenging for those exposed to CORT or incubated at lower temperatures.  
 
 ## Methods  
 
 #### Animal husbandry  
 *Breeding colony* -- The lizards tested in our experiment came from a breeding colony established in the lab in 2019. The colony consisted of approximately 180 adults of _L. guichenoti_ housed in communal containers (41.5 L x 30.5 W x 21 H cm) with six lizards (2 males and 4 females) per enclosure. Enclosures were provided with non-stick matting, shelter, and several small water dishes filled daily, and lizards were fed mid-size crickets (*Acheta domestica*) three days a week. Crickets were dusted with calcium weekly and multivitamins and calcium biweekly. Room temperatures were set to 22-24ºC, but to ensure a temperature gradient, we employed a heat chord and a heat lamp following a 12 h light:12 h dark cycle, keeping the warm side of enclosures at 32-34ºC.  
 
-*Egg collection and incubation* -- Between mid-October 2023 to the end of February 2024, we placed small boxes (12.5 L x 8.3 W x 5 H cm) containing vermiculite on one side of the communal enclosures (see above) to provide females with a place to lay the eggs. We checked for eggs in the boxes three days a week. Eggs' length and width were measured with a digital calliper to the nearest mm (± 0.1 mm), while mass was recorded with a digital scale (OHAUS, Model spx123) to the nearest g (± 0.001 g). Eggs were assigned a clutch number and an individual identity. Then we treated eggs with CORT or vehicle (see CORT and Temperature manipulation below) and placed them in individual cups (80 mL) with moist vermiculite (12 g water to 4 g vermiculite). We covered the cups with plastic wrap to retain moisture and left the eggs in incubators (LATWIT 2X5D-R1160) programmed to two different thermal regimes (see CORT and Temperature manipulation below) until hatching. Incubators were checked for the presence of hatchlings three times a week.  
+*Egg collection and incubation* -- Between mid-October 2023 to the end of February 2024, we placed small boxes (12.5 L x 8.3 W x 5 H cm) containing vermiculite on one side of the communal enclosures (see above) to provide females with a place to lay the eggs. We checked for eggs in the boxes three days a week. Egg length and width were measured with a digital calliper to the nearest mm (± 0.1 mm), while mass was recorded with a digital scale (OHAUS, Model spx123) to the nearest g (± 0.001 g). Eggs were assigned a clutch number and an individual identity. Then we treated eggs with CORT or a vehicle control (see _Manipulating Early Thermal and CORT Environments_ details below) and placed them in individual cups (80 mL) with moist vermiculite (12 g water to 4 g vermiculite). We covered the cups with plastic wrap to retain moisture and left the eggs in incubators (LATWIT 2X5D-R1160) programmed to two different thermal regimes (see _Manipulating Early Thermal and CORT Environments_ details below) until hatching. Incubators were checked for the presence of hatchlings three times a week.  
 
 *Hatchlings* -- Immediately after hatching, we measured Snout-Vent Length (SVL) and Tail Length (TL) with a ruler to the nearest mm (± 0.1 mm), and mass using a digital scale (OHAUS, Model spx123) to the nearest g (± 0.001 g). Hatchlings were then placed in individual enclosures (18.7L x 13.2W x 6.3H cm) provided with non-stick matting and a small water dish. During this period, they were given water daily and received 3-6 small *A. domestica* crickets three times a week. All care otherwise follows similar protocols to adults (see above).  
 
 
 #### Manipulating Early Thermal and CORT Environments  
 
-We manipulated CORT concentration in eggs and incubated them under one of two temperature regimes (Cold -- 23 ± 3ºC or Hot -- 30 ± 3ºC) in a 2x2 factorial design (@fig-Methods A). Eggs were allocated to one of two different developmental stress treatments: CORT-treated eggs were topically supplied with 5µL of a CORT solution (10pg/mL) Control treatment eggs received an equal volume of 100% Ethanol. Corticosterone treatments were made by dissolving crystalline corticosterone (Sigma, Cat. No. C2505) in 100% ethanol. We selected those doses based on previous studies where CORT treatment increased mean yolk CORT levels ~3.7x higher than control eggs in _Lampropholis delicata_ [@crino2024eggs]. Then, eggs were incubated in one of the two previously mentioned temperature regimes (Cold or Hot) until hatching. These temperatures represent the upper and lower limit of the natural incubation temperatures for this species [@qualls2000post]. The number of eggs per clutch assigned to each hormone and temperature treatment was counterbalanced per clutch.  
+We manipulated CORT concentration in eggs and incubated them under one of two temperature regimes (Cold -- 23 ± 3 ºC or Hot -- 30 ± 3 ºC) in a 2x2 factorial design (@fig-Methods A). Eggs were allocated to one of two different developmental stress treatments: CORT-treated eggs were topically supplied with 5 µL of a CORT solution (10 pg/mL). Control treatment eggs received an equal volume of 100% Ethanol. Corticosterone treatments were made by dissolving crystalline corticosterone (Sigma, Cat. No. C2505) in 100% ethanol. We selected doses based on previous studies where CORT treatment increased mean yolk CORT levels ~3.7x higher than control eggs in _Lampropholis delicata_ [@crino2024eggs]. Then, eggs were incubated in one of the two previously mentioned temperature regimes (Cold or Hot) until hatching. These temperatures represent the upper and lower limit of the natural incubation temperatures for this species [@qualls2000post]. 
+
+The number of eggs per clutch assigned to each hormone and temperature treatment was counterbalanced in a partial split-clutch design. At least one egg per clutch to each treatment, and the remaining eggs were randomly assigned to one of the treatments. When we found less than four eggs in a cluthc, we assigned each egg randomly to one of the treatments.  
 
 #### Numerical discrimination task  
 
@@ -105,13 +105,13 @@ All tests were done between 1000-1200 hours when the lizards were most active. E
 Motivation plays a key role in animals' performance in spontaneous choice tests [@agrillo2014spontaneous; @bisazza2014experim]. To ensure that lizards remained motivated to forage, they were provided with only one cricket during both acclimatization and the numerical task (see above). During acclimatization, lizards were fed at the same time each day as the experiments were conducted. In the numerical task, lizards received a cricket immediately after the test and then fasted for more than 20 hours, which we expected would help standardize fasting levels across individuals. To further control for motivation, we excluded from our analyses any trials in which lizards did not interact with any options or did not eat the cricket provided after the test (n = 0 in both cases). Consequently, we do not consider motivation to be a major factor influencing our results (but see Discussion).  
 
 #### Statistical analyses  
-In our analyses, we fitted a multivariate Bayesian multilevel model using the brm function from the _brms_ package [@burkner2017brms] in R extension (version 2.8.2) [@R]. We ran four parallel MCMC chains of 3000 iterations for each model, with a warmup period of 1000 iterations. We checked that all MCMC chains converged (Rhat < 1.2) and were mixing effectively to ensure we had >1000 effective samples from the posterior distribution.   
+In our analyses, we fitted a multivariate Bayesian multilevel model using the brm function from the _brms_ package [@burkner2017brms] in R (version 2.8.2) [@R]. We ran four parallel MCMC chains of 3000 iterations for each model, with a warmup period of 1000 iterations. We checked that all MCMC chains converged (Rhat < 1.2) and were mixing effectively to ensure we had >1000 effective samples from the posterior distribution.   
 
-We modelled the three main recorded behaviours: _Latency_, _Choice_, and _Interest_ as the response variables. We assumed normal distributions for Latency (log-transformed) and Interest [family = gaussian()]. The error structure for Choice was modeled using a Bernoulli distribution with a logit link function [family = Bernoulli(link = ‘logit’)]. We included test (1 VS 4, 1 VS 3, 2 VS 4, 2 VS 3, 3 VS 4), hormone (CORT versus Control), incubation temperature (Cold versus Hot), and the three-way interaction as fixed factors. We also included in our predictors sex, and age. We did not find any effect of sex or age on Choice or Interest, but we found an effect on Latency (see Results). However, we decided to include both factors in all models. Age was centered to zero in the model, and we averaged the predicted values for males and females.  
+We modelled the three main recorded behaviours: _Latency_, _Choice_, and _Interest_ as the response variables. We assumed normal distributions for Latency (log-transformed) and Interest [family = gaussian()]. The error structure for Choice was modeled using a Bernoulli distribution with a logit link function [family = Bernoulli(link = ‘logit’)]. We included test (1 VS 4, 1 VS 3, 2 VS 4, 2 VS 3, 3 VS 4), hormone (CORT versus Control), incubation temperature (Cold versus Hot), and the three-way interaction as fixed factors. We also included in our predictors sex, and age. We did not find any effect of sex or age on Choice or Interest, but we found an effect on Latency (see Results). Regardless, we included both factors in all models. Age was centered to zero in the model, and we averaged the predicted values for males and females.  
 
 We included lizard identity and clutch as random factors. _L. guichenoti_ lays up to two clutches per year [@joss1985reproductive]. Since egg collection was done during half of the breeding season, each clutch likely came from a unique mother, and so, clutch identity captures potential maternal effects.  
 
-We used the posterior distributions of parameters from these models to test for between treatment differences in the ability to discriminate different numbers of crickets for each of the numerical tests. Because the posteriors did not follow a normal distribution, we report the median as the main measure of central tendency. We also employed Highest Density Intervals using the hdi function in bayestestR [@bayestestR] to test if the contrasts between treatments for all the variables, or the _Interest_ per each test was different form zero. Given Choice was Bernoulli, we modified our null hypotheses to test if differed from a probability of 0.5 as there were only two possible options.  
+We used the posterior distributions of parameters from these models to test for between treatment differences in the ability to discriminate different numbers of crickets for each of the numerical tests. Because the posterior distributions were not always normally distributed, we report the median as the main measure of central tendency. We used the 95% Highest Posterior Density Intervals (95% HPDI) using the hdi function in bayestestR [@bayestestR] to test if the contrasts between treatments for all the variables, or the _Interest_ per each test was different form zero. Given Choice was Bernoulli, we modified our null hypotheses to test if differed from a probability of 0.5 as there were only two possible choices and if animals were choosing randomly we would predict each choice would have a 50% probability.    
  
 #### Ethical note
 Subjects were collected from a breeding colony that had been kept in the lab since 2019. All animals in this experiment were provided humane laboratory housing, thermoregulation opportunities, and light and humidity conditions (see above for details). Lizards in the colony received five to seven crickets per individual three times a week while the subjects in the experiment were fed once per day. All lizards were handled minimally to avoid stress. Experimental procedures and laboratory housing complied with Australian law and were approved by the Australian National University Animal Experimentation Ethics Committee (A2022_33). Upon completion of experimental trials, lizards were kept in their enclosure and will be euthanized following standard humane procedures once they reach the humane endpoint.  
@@ -172,11 +172,11 @@ normality_results_int <- check_normality(post_int)
 #
 ```
 
-Overall, males showed lower latencies than females (median of the estimated effect of sex = `r {format_dec(median(posteriors$b_loglatency_sexm), 2)}`, Higest Density Interval = [`r {format_dec(hdi(posteriors$b_loglatency_sexm, credMass = 0.95)[1], 2)}`, `r {format_dec(hdi(posteriors$b_loglatency_sexm, credMass = 0.95)[2], 2)}`]), and older individuals also made decisions faster (mean estimated effect of age = `r {format_dec(median(posteriors$b_loglatency_age),2)}`, Higest Density Interval = [`r {format_dec(hdi(posteriors$b_loglatency_age, credMass = 0.95)[1], 2)}`, `r {format_dec(hdi(posteriors$b_loglatency_age, credMass = 0.95)[2],2)}`]; see Table S1 in _Supplementary Material_). However, we did not see any effect of age or sex on _Choice_ or _Interest_ (see _Supplementary Material_).  
+Overall, males showed lower latencies than females (median of the estimated effect of sex = `r {format_dec(median(posteriors$b_loglatency_sexm), 2)}`, 95% HPDI = [`r {format_dec(hdi(posteriors$b_loglatency_sexm, credMass = 0.95)[1], 2)}`, `r {format_dec(hdi(posteriors$b_loglatency_sexm, credMass = 0.95)[2], 2)}`]), and older individuals also made decisions faster (mean estimated effect of age = `r {format_dec(median(posteriors$b_loglatency_age),2)}`, 95% HPDI = [`r {format_dec(hdi(posteriors$b_loglatency_age, credMass = 0.95)[1], 2)}`, `r {format_dec(hdi(posteriors$b_loglatency_age, credMass = 0.95)[2],2)}`]; see Table S3 in _Supplementary Material_). However, we did not see any effect of age or sex on _Choice_ or _Interest_ (see _Supplementary Material_).  
 
 ```{r, fig-results}
 #| label: fig-results
-#| fig.cap: "Estimates of log-latency (Latency), the probability of choosing the larger number of crickets first (Choice), and the estimated interest in the larger number of crickets (Interest) for each of the numerical tests performed across different developmental treatments. The x-axis represents the estimate, and the y-axis is the posterior density of the estimates. The different colours indicate the different treatments. Points and bars represent the median and Higest Density Intervals of the estimates, respectively. Vertical dashed lines in Choice and Interest graphs values 0.5 and 0, respectively. Asterisks indicate values significantly different from 0."
+#| fig.cap: "Estimates of log-latency (Latency), the probability of choosing the larger number of crickets first (Choice), and the estimated interest in the larger number of crickets (Interest) for each of the numerical tests performed across different developmental treatments. The x-axis represents the estimate, and the y-axis is the posterior density of the estimates. The different colours indicate the different treatments. Points and bars represent the median and 95% Higest Density Intervals (95% HPDI) of the estimates, respectively. Vertical dashed lines in Choice and Interest graphs values 0.5 and 0, respectively. Asterisks indicate values significantly different from 0."
 #
 source(here("R", "func.R"))
 #
@@ -206,12 +206,12 @@ ggsave("./output/figures/fig_results.png", plot=fig_results, width = 25, height 
 knitr::include_graphics("./output/figures/fig_results.png")
 ```
 
-Neither temperature, CORT, or their interaction affected performance in any of the tests, nor were there any clear patterns suggestive of an effect of the developmental environment on numerical discrimination (see Table 1 and @fig-results). Except for Hot-CORT lizards in 1 VS 3 tests or Cold-Control lizards in 2 VS 3 tests, the predicted probability of choosing the larger number of crickets first was not different from 0.5 (@fig-results; but also see Table S2 in _Supplementary Material_). Similarly, interest in the larger number of crickets (_Interest_) was not different from 0 in any of the tests (@fig-results; but also see Table S2 in _Supplementary Material_).  
+Neither temperature, CORT, or their interaction affected performance in any of the tests, nor were there any clear patterns suggestive of an effect of the developmental environment on numerical discrimination (see Table 1 and @fig-results). Except for Hot-CORT lizards in 1 VS 3 tests or Cold-Control lizards in 2 VS 3 tests, the predicted probability of choosing the larger number of crickets first was not different from 0.5 (@fig-results; but also see Table S1 and Table S2 in _Supplementary Material_). Similarly, interest in the larger number of crickets (_Interest_) was not different from 0 in any of the tests (@fig-results; but also see Table S1 and Table S2 in _Supplementary Material_).  
 
-_Table 1. Effects of temperature, CORT, and their interaction on Latency, Choice, and Interest in each of the numerical discrimination tests. The table shows the contrasts for each predictor (Temperature = [medianHot - medianCold]; Hormone = [medianControl - medianCORT]; and their Interaction = [(medianHot-Control - medianHot-CORT) - (medianCold-Control - medianCold-CORT)]). Higest Density Intervals (HDI) test the hypothesis that contrasts are different from zero._
+_Table 1. Effects of temperature, CORT, and their interaction on Latency, Choice, and Interest in each of the numerical discrimination tests. The table shows the contrasts for each predictor (Temperature = [medianHot - medianCold]; Hormone = [medianControl - medianCORT]; and their Interaction = [(medianHot-Control - medianHot-CORT) - (medianCold-Control - medianCold-CORT)]). 95% Higest Density Intervals (95% HPDI) test the hypothesis that contrasts are different from zero._
 ```{r, tbl-data}
 #| label: tbl-data
-#| tbl-cap: "Effects of temperature, CORT, and their interaction on Latency, Choice, and Interest in each of the numerical discrimination tests. The table shows the contrasts for each predictor (Temperature = [meanHot - meanCold]; Hormone = [meanControl - meanCORT]; Interaction = [(meanHot-Control - meanHot-CORT) - (meanCold-Control - meanCold-CORT)]) and the p~mcmcm~ value of the contrasts. In bold, the effects where p~mcmc~ < 0.05."
+#| tbl-cap: "Effects of temperature, CORT, and their interaction on Latency, Choice, and Interest in each of the numerical discrimination tests. The table shows the contrasts for each predictor (Temperature = [medianHot - medianCold]; Hormone = [medianControl - medianCORT]; and their Interaction = [(medianHot-Control - medianHot-CORT) - (medianCold-Control - medianCold-CORT)]). 95% Higest Density Intervals (95% HPDI) test the hypothesis that contrasts are different from zero."
 source(here("R", "func.R"))
 #
 # Making the df for each variable
@@ -289,7 +289,9 @@ set_flextable_defaults(
 real_table <- flextable(table_df) %>%
     align(align="center", part="all") %>% 
     add_header_row(values = c("", "Tests"), colwidths = c(2, 5)) %>%
-    flextable::compose(i = c(2,3,5,6,8,9), j = 1, value = as_paragraph(""), part = "body") %>% # To remove some of the values in the first column
+    flextable::compose(i = c(3,6,8,9), j = 1, value = as_paragraph(""), part = "body") %>% # To remove some of the values in the first column
+    flextable::compose(i = 2, j = 1, value = as_paragraph("log(latency)"), part = "body") %>%
+    flextable::compose(i = 5, j = 1, value = as_paragraph("log(odds)"), part = "body") %>%
     hline(i = c(3,6), j = c(1:7), part = "body") %>% # To make some horizontal lines 
     set_table_properties(layout = "autofit", width = 1)
 real_table
@@ -297,19 +299,19 @@ real_table
 
 
 ## Discussion
-Contrary to our predictions that numerical cues would influence foraging decisions, and that elevated prenatal CORT or cold incubation temperatures would impair numerical discrimination, we found no significant differences across tests or treatments. Our results indicate that lizards did not discriminate between different numbers of crickets, nor did their performance vary under our experimental conditions. Overall, these findings suggest that L. guichenoti did not utilize numerical or other potential quantitative cues for foraging decisions. This highlights the need for further research into the ecological implications of such behaviors in lizards and their foraging strategies.  
+Contrary to our predictions that numerical cues would influence foraging decisions, and that elevated prenatal CORT or cold incubation temperatures would impair numerical discrimination, we found no significant differences across tests or treatments. Our results indicate that lizards did not discriminate between different numbers of crickets, nor did their performance vary under our experimental conditions. Overall, these findings suggest that _L. guichenoti_ did not use numerical or other potential quantitative cues for foraging decisions.    
 
 #### Foraging context may influence prey number discrimination in reptiles  
-Lack of numerical discrimination in _L. guichenoti_ may be due to insectivorous lizards relying on other cues, such as movement or size, for foraging decisions. In those studies where reptiles discriminated between different amounts of food, the relevant stimuli involved either vegetables [@gazzola2018continuous; @szabo_spontaneous_2021] or large quantities (e.g., 5 vs. 10)[@recio_prey_2021]. In contrast, when _Podarcis siculus_ were presented different numbers of _Musca domestica_ larvae in a spontaneous choice test, the lizards failed to discriminate between quantities despite showing high quantitative skills when prey size was the main cue [@miletto2017quantitative] or when tested using training procedures [@miletto2018quantity]. Remarkably, the numbers of food items employed in @miletto2017quantitative were always fewer than four. Spontaneous choice tests assume that animals should select the most appropriate quantity, which may not necessarily be the largest one [@agrillo2014spontaneous]. This occurrs if the costs of selecting the larger option outweigh the benefits. For example, when presented two groups with different numbers of conspecifics or if prey handling costs are related to larger quantitative traits like size [@agrillo2014spontaneous]. It could be that the perceived handling costs of larger numbers of prey is affecting lizards' response. Nevertheless, in that scenario, we would still expect animals to exhibit a preference, even if for the smaller amount of food, or to observe some influence of lizards' size on their choices, as larger animals may be more adept at handling a greater number of prey items. @miletto2017quantitative did not report any effect of lizards' size, and age - a proxy for size - did not affect _L. guichenoti_'s _Choice_ or _Interest_ in our study. The absence of preference in _P. siculus_ and _L. guichenoti_ suggests that the benefits of selecting larger number of prey are not different from selecting fewer. For instance, when considering hunting groups of 1 VS 4 or 2 VS 4 crickets, the probability of success might be similar. Furthermore, while one individual handles a prey item in the patch, other conspecifics could capture the rest. As a result, insectivorous lizards might not have evolved a preference for larger patches of prey, at least with small numbers [see @recio_prey_2021].  
+Lack of numerical discrimination in _L. guichenoti_ may be due to insectivorous lizards relying on other cues, such as movement or size, for foraging decisions. In studies where reptiles discriminated between different amounts of food, the relevant stimuli involved either vegetables [@gazzola2018continuous; @szabo_spontaneous_2021] or large quantities (e.g., 5 vs. 10)[@recio_prey_2021]. In contrast, when _Podarcis siculus_ were presented different numbers of _Musca domestica_ larvae in a spontaneous choice test, the lizards failed to discriminate between quantities despite showing high quantitative skills when prey size was the main cue [@miletto2017quantitative] or when tested using training procedures [@miletto2018quantity]. Remarkably, the numbers of food items employed in @miletto2017quantitative were always fewer than four. Spontaneous choice tests assume that animals should select the most appropriate quantity, which may not necessarily be the largest one [@agrillo2014spontaneous]. This occurrs if the costs of selecting the larger option outweigh the benefits. For example, when presented two groups with different numbers of conspecifics or if prey handling costs are related to larger quantitative traits like size [@agrillo2014spontaneous]. It could be that the perceived handling costs of larger numbers of prey is affecting lizard response in our study. Nevertheless, in that scenario, we would still expect animals to exhibit a preference, even if for the smaller amount of food, or to observe some influence of lizard size on their choices, as larger animals may be more adept at handling a greater number of prey items. @miletto2017quantitative did not report any effect of body size, and age - a proxy for size - did not affect _L. guichenoti_'s _Choice_ or _Interest_ in our study. The absence of preference in _P. siculus_ and _L. guichenoti_ suggests that the benefits of selecting a larger number of prey are not different from selecting fewer. For instance, when considering hunting groups of 1 VS 4 or 2 VS 4 crickets, the probability of success might be similar. Furthermore, while one individual handles a prey item in the patch, other conspecifics could capture the rest. As a result, insectivorous lizards might not have evolved a preference for larger patches of prey, at least with small numbers [see @recio_prey_2021].  
 
-Conversely, our findings may be influenced by the experimental design. In our study, we rotated the position of the crickets in the choice with fewer items to create a situation where the numbers and other quantitative cues associatied with numerosity were in conflict. This approach was intended to control for other quantitative cues that could be used by lizards to make decisions [@cooper2024tell]. However, this manipulation could have made the task more challenging for lizards, potentially affecting their performance. Indeed, it is possible that _L. guichenoti_ uses multiple quantitative cues simultaneously during foraging decisions. When those cues conflict, the preference for one cue over another might vary between individuals, potentially producing the results observed here. Future studies should explore the use of other quantitative cues in _L. guichenoti_ and how they interact with numerical information.  
+Conversely, our findings may be influenced by the experimental design. In our study, we rotated the position of the crickets in the choice with fewer items to create a situation where the numbers and other quantitative cues associatied with numerosity were in conflict. This approach was intended to control for other quantitative cues that could be used by lizards to make decisions [@cooper2024tell]. However, this manipulation could have made the task more challenging for lizards, potentially affecting their performance. Indeed, it is possible that _L. guichenoti_ uses multiple quantitative cues simultaneously during foraging decisions. When those cues conflict, the preference for one cue over another might vary between individuals, potentially producing the results observed here. Future studies should explore the use of other quantitative cues in _L. guichenoti_ and how they interact with numerical information. Such studies would enhance our understanding of how _L. guichenoti_ integrates different quantitative cues during foraging, providing insights into their decision-making processes and overall quantitative abilities.  
 
-#### Foraging behaviour is robust to prenatal CORT and temeprature  
-Although the effects of early environment on cognition is widely studied, little atention has been paid to its impacts on numerical discrimination. To the best of our knowledge, there is only one study examining how developmental conditions influence numerical abilities. @vila_pouca_quantity_2019 investigated the effects of incubating and rearing Port Jackson sharks (_Heterodontus portusjacksoni_) at different temperatures on their ability to learn a quantity discrimination task. They found that those animals reared in warm water took fewer days to reach the learning criterion. Given the potent effects of early environment on cognition and brain development [@szuran_water_1994; @zhu_prenatal_2004; @amiel_hotter_2012; @amiel_egg_2014; @clark_colour_2014; @amiel_effects_2017; @lui2017chronic], it is crucial to explore how early environmental conditions shape numerical abilities across taxa.  
+#### Foraging behaviour is robust to early environmental experiences  
+Although the effects of early environment on cognition is widely studied, little attention has been paid to its impacts on numerical discrimination. To the best of our knowledge, there is only one study examining how developmental conditions influence numerical abilities [@vila_pouca_quantity_2019]. Given the potent effects of early environment on cognition and brain development [@szuran_water_1994; @zhu_prenatal_2004; @amiel_hotter_2012; @amiel_egg_2014; @clark_colour_2014; @amiel_effects_2017; @lui2017chronic], it is crucial to explore how early environmental conditions shape numerical abilities across taxa.  
 
-In our experimental design, prenatal treatments did not influence numerical discrimination in _L. guichenoti_, but we cannot discount the possibility that early environmental factors may affect numerical discrimination under other approaches or contexts. Based on previous studies showing the effects of prenatal temperature and GCs on cognitive abilities in reptiles and other groups [@szuran_water_1994; @zhu_prenatal_2004; @amiel_hotter_2012; @amiel_egg_2014; @clark_colour_2014; @amiel_effects_2017; @lui2017chronic], we predicted that lower incubation temperatures and exposure to CORT will impair lizards' performance, especially in those tests with higher ratios [@agrillo2014spontaneous; @nieder2018evolution]. However, we did not find any effect of the experimental treatments on _L. guichenoti_'s behaviour when tested in a numerical task. Both GCs and thermal environment can exert differential effects on distinct areas of the brain. For example, incubating eggs of the eastern three-lined skink (_Bassiana dupeyerri_) at elevated temperatures increased cell density in the medial cortex - linked to learning process and memory - but did not impact cell density in other nuclei [@amiel_effects_2017]. Similarly, impairments in spatial learning in rats [@haq_prenatal_2021] are likely associated with the greater density of GCs receptors in mammals' hippocampus compared to other regions of the brain [@siegel_2006]. Researchers have proposed that non-verbal number representation is processed by two types of systems: one for small sets (≤ 4) that tracks and encodes objects as individual entities, and another for larger numerosities that operate through estimation processes [@nieder2005counting; @cantlon2009beyond; @hyde2011two]. While it remains unknown which areas of the reptiles' brain encode numerical information, our results suggest that those brain regions involved in discrete numerical representation (≤ 4 items) might be robust to the effect of prenatal CORT and temperature in _L. guichenoti_.  
+In our experimental design, prenatal treatments did not influence numerical discrimination in _L. guichenoti_, but we cannot discount the possibility that early environmental factors may affect numerical discrimination under other approaches or contexts. Based on previous studies showing the effects of prenatal temperature and GCs on cognitive abilities in reptiles and other groups [@szuran_water_1994; @zhu_prenatal_2004; @amiel_hotter_2012; @amiel_egg_2014; @clark_colour_2014; @amiel_effects_2017; @lui2017chronic], we predicted that lower incubation temperatures and exposure to CORT will impair lizards' performance, especially in those tests with higher ratios [@agrillo2014spontaneous; @nieder2018evolution]. However, we did not find any effect of the experimental treatments on _L. guichenoti_'s behaviour when tested in a numerical task. Both GCs and thermal environment can exert differential effects on distinct areas of the brain. For example, incubating eggs of the eastern three-lined skink (_Bassiana dupeyerri_) at elevated temperatures increased cell density in the medial cortex - linked to learning process and memory - but did not impact cell density in other nuclei [@amiel_effects_2017]. Similarly, impairments in spatial learning in rats [@haq_prenatal_2021] are likely associated with the greater density of GCs receptors in the hippocampus compared to other regions of the brain [@siegel_2006]. Researchers have proposed that non-verbal number representation is processed by two types of systems: one for small sets (≤ 4) that tracks and encodes objects as individual entities, and another for larger numerosities that operate through estimation processes [@nieder2005counting; @cantlon2009beyond; @hyde2011two]. While it remains unknown which areas of the reptiles' brain encode numerical information, our results suggest that those brain regions involved in discrete numerical representation (≤ 4 items) might be robust to the effect of prenatal CORT and temperature in _L. guichenoti_.  
 
-Alternatively, it is plausible that treatment effects are masked by the overall poor performance across most of the tests, which could be a consequence of the species’ reliance on another type of cues for foraging other than numerical information. In this regard, motivation is a key factor in spontaneous choice tests [@agrillo2014spontaneous; @bisazza2014experim]. Both developmental CORT and incubation temperature can affect metabolic rate (hereafter MR) which could affect motivation in food based learning paradigms [@crino_corticosterone_2014-learn; @noble_developmental_2018; @cossin2022effect]. Here, we  controlled for motivation by providing only one cricket per day and fasting lizards for more than 20 hours before the test. In addition, we excluded those tests where lizards did not interact with any of the options or did not eat the cricket provided after the test. However, it is possible that the fasting period was not long enough to standardize hunger levels across individuals. Further studies should explore the effects of prenatal conditions on motivation and how it interacts with cognitive abilities in reptiles.  
+Alternatively, it is plausible that treatment effects are masked by the overall poor performance across most of the tests, which could be a consequence of the species’ reliance on other types of cues for foraging other than numerical information. In this regard, motivation is a key factor in spontaneous choice tests [@agrillo2014spontaneous; @bisazza2014experim]. Both developmental CORT and incubation temperature can affect metabolic rate (hereafter MR) which could affect motivation in food based learning paradigms [@crino_corticosterone_2014-learn; @noble_developmental_2018; @cossin2022effect]. Although still possible, this explanation is less likely in our study because we controlled for motivation by providing only one cricket per day and fasting lizards for more than 20 hours before the test. In addition, we excluded tests where lizards did not interact with any of the options or did not eat the cricket provided after the test. Further studies should explore the effects of prenatal conditions on motivation and how it may affect the outcome of cognitive choice tests in reptiles.    
 
 #### Conclusion
 Our study is, to the best of our knowledge, the first to explore the impact of prenatal conditions on numerical abilities in reptiles. Our findings suggest that _L. guichenoti_ does not rely on numerical information for foraging decisions and that their performance does not vary across different prenatal treatments. These results indicate that early environmental conditions, such as incubation temperature and CORT exposure, may not affect numerosity in this species. However, it is critical to note that the methodologies employed in this study may not have fully captured the nuances of numerical cognition in _L. guichenoti_. Therefore, we recommend that future studies employ a broader array of tests and paradigms, including training-based tasks, larger sets of stimuli, and other sensory modalities, to more comprehensively assess numerical competence in this and related species. Such work will be fundamental in unravelling early environmental factors' effects on reptiles' cognitive abilities and advancing our understanding of numerical discrimination across taxa.  
@@ -328,7 +330,7 @@ All authors gave final approval for publication and agreed to be held accountabl
 We declare we have no competing interests.  
 
 ## Funding  
-This work was supported by a National Australian University fellowship (PR), and the Australian Research Council (grant no. DP210101152) to DN and CF.  
+This work was supported by a National Australian University PhD scholarship (PR), and the Australian Research Council (grant no. DP210101152) to DN and CRF.  
 
 ## Acknowledgements  
 We thank the help and assistance of our lab technicians Benjamin Durant and Michelle Stephens for taking care of the lizards. We are also grateful ANU MakerSpace, where we designed and built the prototypes of the 3D-printed platforms. Finally, we wish to acknowledge the anonymous reviewers for their valuable feedback on the manuscript.  
@@ -342,91 +344,12 @@ cat("\\newpage")
 
 # Suplementary Material
 
-#### Model results
+#### Effects of treatments on numerical discrimination using the estimates and the raw data
 
-_Table S1.- Summary of the model fitted_
-
-```{r, summary_org}
-#| label: summary_org
-#
-## Get the summary of the posteriors to get the estimates of each parameter of the model
-sum <- summary(posteriors)
-## Extract the values of the summary
-sum_2 <- as.data.frame(sum) %>%
-  dplyr::select(-mad) %>%
-  filter(!str_detect(variable, "^r_"))
-sum_df <- sum_2 %>%
-  mutate(across(where(is.numeric), ~ sprintf(paste0("%.", 2, "f"), .)))  
-```
-
-
-For loglatency (Latency)
-```{r, tbl-summary_lat}
-#| label: tbl-summary_lat
-#| tbl-cap: "Summary of the model fitted for the latency variable."
-#
-source(here("R", "func.R"))
-## Get df only for latency
-df_sum_lat <- sum_table_org(sum_df, "lat")
-## Make table
-table_sum_lat <- flextable(df_sum_lat)
-table_sum_lat
-```
-
-
-For Choice
-```{r, tbl-summary_choice}
-#| label: tbl-summary_choice
-#| tbl-cap: "Summary of the model fitted for the choice variable."
-#
-source(here("R", "func.R"))
-## Get df only for choice
-df_sum_choice <- sum_table_org(sum_df, "choice")
-## Make table
-table_sum_choice <- flextable(df_sum_choice)
-table_sum_choice
-```
-
-
-For Interest
-```{r, tbl-summary_int}
-#| label: tbl-summary_int
-#| tbl-cap: "Summary of the model fitted for the interest variable."
-#
-source(here("R", "func.R"))
-## Get df only for interest
-df_sum_int <- sum_table_org(sum_df, "int")
-## Make table
-table_sum_int <- flextable(df_sum_int)
-table_sum_int
-```
-
-
-Other effects
-```{r, tbl-summary_other}
-#| label: tbl-summary_other
-#| tbl-cap: "Summary of the model fitted for other effects."
-#
-source(here("R", "func.R"))
-## Get df only for interest
-df_sum_other <- sum_df %>%
-  filter(!str_detect(variable, "^b_"))
-## Make table
-table_sum_other <- flextable(df_sum_other)
-table_sum_other
-```
-
-
-```{r, results='asis', echo=FALSE}
-cat("\\newpage")
-```
-
-#### Treatments effects
-
-_Table S2.- Median and Higest Density Intervals of the estimated probability of choosing first the higher amount (Choice) and the estimated interest for the higher amount of food (Interest) per treatment group for each of the numerical tests performed. Higest Density Intervals test the hypothesis that Choice = 0.5, and Interest = 0, which would indicate a preference towards one of choices._
+_Table S1.- Median and 95% Higest Density Intervals (95% HPDI) of the estimated probability of choosing first the higher amount (Choice) and the estimated interest for the higher amount of food (Interest) per treatment group for each of the numerical tests performed. 95% HPDI test the hypothesis that Choice = 0.5, and Interest = 0, which would indicate a preference towards one of choices._
 ```{r, tbl-disc}
 #| label: tbl-disc
-#| tbl-cap: "Median and Higest Density Intervals of the estimated probability of choosing first the higher amount (Choice) and the estimated interest for the higher amount of food (Interest) per treatment group for each of the numerical tests performed. Higest Density Intervals test the hypothesis that Choice = 0.5, and Interest = 0, which would indicate a preference towards one of choices."
+#| tbl-cap: "Median and 95% HPDI of the estimated probability of choosing first the higher amount (Choice) and the estimated interest for the higher amount of food (Interest) per treatment group for each of the numerical tests performed. 95% HPDI test the hypothesis that Choice = 0.5, and Interest = 0, which would indicate a preference towards one of choices."
 #
 source(here("R", "func.R"))
 #
@@ -457,7 +380,7 @@ for(c in variable){
     Cold_Control <- post_mod[[paste0("X", d, "_Cold_Control")]]
     Hot_CORT <- post_mod[[paste0("X", d, "_Hot_CORT")]]
     Hot_Control <- post_mod[[paste0("X", d, "_Hot_Control")]]
-    # Calculate medians and Higest Density Intervals
+    # Calculate medians and 95% HPDI
     Cold_CORT_median <- format_dec(median(Cold_CORT), 2)
     Cold_Control_median <- format_dec(median(Cold_Control), 2)
     Hot_CORT_median <- format_dec(median(Hot_CORT), 2)
@@ -472,7 +395,7 @@ for(c in variable){
     int_Hot_Control <- paste0("[", format_dec(hdi(Hot_Control, credMass = 0.95)[1], 2), " , ",
                             format_dec(hdi(Hot_Control, credMass = 0.95)[2], 2), "]")
     # Define labels and values
-    treatment_names <- c("Cold-CORT", "Cold-Control", "Hot-CORT", "Hot-Control")
+    treatment_names <- c("Cold-CORT (n = 20)", "Cold-Control", "Hot-CORT", "Hot-Control")
     values_medians <- c(Cold_CORT_median, Cold_Control_median, Hot_CORT_median, Hot_Control_median)
     values_int <- c(int_Cold_CORT, int_Cold_Control, int_Hot_CORT, int_Hot_Control)
     # Create a temporary data frame for this loop iteration
@@ -495,7 +418,12 @@ disc_df_final <- as.data.frame(disc_df, stringsAsFactors = FALSE) %>%
   pivot_wider(names_from = Variable, values_from = c(Effect, int), names_prefix = "") %>%
   dplyr::select(Test, Treatment, 
                 Effect_Choice, int_Choice,
-                Effect_Interest, int_Interest)
+                Effect_Interest, int_Interest) %>%
+  mutate(Treatment = factor(Treatment, levels = c("Hot-Control (n = 20)",
+                                      "Hot-CORT (n = 20)",
+                                      "Cold-Control (n = 20)",
+                                      "Cold-CORT (n = 20)"))) %>%
+data.frame()
 #
 #
 # Making the table
@@ -503,7 +431,7 @@ disc_df_final <- as.data.frame(disc_df, stringsAsFactors = FALSE) %>%
 ## Table format
 set_flextable_defaults(
  font.family = "Arial",
- fint.size = 10)
+ font.size = 10)
 # Create the table
 disc_table <- flextable(disc_df_final) %>%
     set_table_properties(width = 1) %>%
@@ -511,7 +439,7 @@ disc_table <- flextable(disc_df_final) %>%
     flextable::compose(i = c(2:4,6:8,10:12,14:16,18:20), j = 1, value = as_paragraph(""), part = "body") %>% # To remove some of the values in the first column
     flextable::add_header_row(values = c("", "Choice", "Interest"), colwidths = c(2, 2, 2)) %>%
     flextable::compose(i = 2, j = c(3,5), value = as_paragraph("Median"), part = "head") %>% 
-    flextable::compose(i = 2, j = c(4,6), value = as_paragraph("HPD Interval"), part = "head") %>% 
+    flextable::compose(i = 2, j = c(4,6), value = as_paragraph("95% HPDI"), part = "head") %>% 
     hline(i = c(4,8,12,16), j = c(1:6), part = "body") %>% # To make some horizontal lines
     vline(i = c(1:20), j = 2, part = "body") %>% # To make some vertical lines
     vline(i = c(1:20), j = 4, part = "body") %>% # To make some vertical lines
@@ -520,13 +448,164 @@ disc_table <- flextable(disc_df_final) %>%
 disc_table
 ```
 
+_Table S2.- Performance of each treatment in each of the numerical tests using the raw data. For the variable Latency and Interest, we show the median and the 95% CI. For the varaible Choice, we show the proportion of individuals that chose the higher number of crickets first._
+
+```{r, tbl-discraw}
+#| label: tbl-discraw
+#| tbl-cap: "Performance of each treatment in each of the numerical tests using the raw data. For the variable Latency and Interest, we show the median and the 95% CI. For the varaible Choice, we show the proportion of individuals that chose the higher number of crickets first."
+#
+data_table_raw <- data_num %>%
+  dplyr::select(trt, test_type, latency, choice, compared_interest) %>%
+  group_by(trt, test_type) %>%
+  summarize(
+    mean_latency = format_dec(mean(latency, na.rm = TRUE), 2),
+    ci_latency_lower = format_dec(quantile(latency, 0.025, na.rm = TRUE), 2),
+    ci_latency_upper = format_dec(quantile(latency, 0.975, na.rm = TRUE), 2),
+    mean_interest = format_dec(mean(compared_interest, na.rm = TRUE), 2),
+    ci_interest_lower = format_dec(quantile(compared_interest, 0.025, na.rm = TRUE), 2),
+    ci_interest_upper = format_dec(quantile(compared_interest, 0.975, na.rm = TRUE), 2),
+    Choice = as.character(sum(choice == 1, na.rm = TRUE))
+  ) %>%
+  ungroup() %>%
+  mutate(
+    ci_latency = paste0("[", ci_latency_lower, " , ", ci_latency_upper, "]"),
+    ci_interest = paste0("[", ci_interest_lower, " , ", ci_interest_upper, "]"),
+  ) %>%
+  mutate(
+    Latency = trimws(paste0(mean_latency, "\n", ci_latency)),
+    Interest = trimws(paste0(mean_interest, "\n", ci_interest))
+  ) %>%
+  mutate(trt = recode(trt, 
+            "B_23" = "Cold-CORT (n = 20)", 
+            "A_23" = "Cold-Control (n = 20)", 
+            "B_28" = "Hot-CORT (n = 20)", 
+            "A_28" = "Hot-Control (n = 20)")) %>% # To order the treatments
+  dplyr::select(test_type, trt, Latency, Choice, Interest) %>% 
+  pivot_longer(cols = c(Latency, Choice, Interest), 
+               names_to = "variable", 
+               values_to = "value") %>%
+  pivot_wider(names_from = test_type, 
+              values_from = value) %>%
+  dplyr::select(variable, trt, "1 VS 4", "1 VS 3", "2 VS 4", "2 VS 3", "3 VS 4") %>%
+  mutate(variable = factor(variable, levels = c("Latency", "Choice", "Interest")),
+         trt = factor(trt, levels = c("Hot-Control (n = 20)",
+                                      "Hot-CORT (n = 20)",
+                                      "Cold-Control (n = 20)",
+                                      "Cold-CORT (n = 20)"))) %>%
+  arrange(variable, trt) %>%
+data.frame()
+data_table_raw_b <- data_table_raw %>%
+  rename(
+    Variable = variable, 
+    Treatment = trt, 
+    "1 VS 4" = X1.VS.4,
+    "1 VS 3" = X1.VS.3,
+    "2 VS 4" = X2.VS.4,
+    "2 VS 3" = X2.VS.3,
+    "3 VS 4" = X3.VS.4) 
+#
+#
+# Table format
+set_flextable_defaults(
+ font.family = "Arial",
+ font.size = 10)
+# Create the table
+table_raw <- flextable(data_table_raw_b) %>%
+  # Add your custom header rows
+  flextable::add_header_row(values = c("", "Tests", ""), colwidths = c(4, 1, 2)) %>%
+  # Take away some text
+  flextable::compose(i = c(2,3,4,6,7,8,10,11,12), j = 1, value = as_paragraph(""), part = "body") %>%
+  hline(i = c(4,8), j = c(1:7), part = "body") # To make some horizontal lines
+table_raw
+```
+
+
+
+```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+#### Model results
+
+_Table S3A.- Summary of the model fitted for loglatency (Latency)_
+
+```{r, summary_org}
+#| label: summary_org
+#
+## Get the summary of the posteriors to get the estimates of each parameter of the model
+sum <- summary(posteriors)
+## Extract the values of the summary
+sum_2 <- as.data.frame(sum) %>%
+  dplyr::select(-mad) %>%
+  filter(!str_detect(variable, "^r_"))
+sum_df <- sum_2 %>%
+  mutate(across(where(is.numeric), ~ sprintf(paste0("%.", 2, "f"), .)))  
+```
+
+
+```{r, tbl-summary_lat}
+#| label: tbl-summary_lat
+#| tbl-cap: "Summary of the model fitted for the latency variable."
+#
+source(here("R", "func.R"))
+## Get df only for latency
+df_sum_lat <- sum_table_org(sum_df, "lat")
+## Make table
+table_sum_lat <- flextable(df_sum_lat)
+table_sum_lat
+```
+
+
+_Table S3B.- Summary of the model fitted for Choice_   
+```{r, tbl-summary_choice}
+#| label: tbl-summary_choice
+#| tbl-cap: "Summary of the model fitted for the choice variable."
+#
+source(here("R", "func.R"))
+## Get df only for choice
+df_sum_choice <- sum_table_org(sum_df, "choice")
+## Make table
+table_sum_choice <- flextable(df_sum_choice)
+table_sum_choice
+```
+
+
+_Table S3C.- Summary of the model fitted for Interest_  
+```{r, tbl-summary_int}
+#| label: tbl-summary_int
+#| tbl-cap: "Summary of the model fitted for the interest variable."
+#
+source(here("R", "func.R"))
+## Get df only for interest
+df_sum_int <- sum_table_org(sum_df, "int")
+## Make table
+table_sum_int <- flextable(df_sum_int)
+table_sum_int
+```
+
+
+_Table S3D.- Summary of the model fitted for other effects_  
+```{r, tbl-summary_other}
+#| label: tbl-summary_other
+#| tbl-cap: "Summary of the model fitted for other effects."
+#
+source(here("R", "func.R"))
+## Get df only for interest
+df_sum_other <- sum_df %>%
+  filter(!str_detect(variable, "^b_"))
+## Make table
+table_sum_other <- flextable(df_sum_other)
+table_sum_other
+```
+
+
 ```{r, results='asis', echo=FALSE}
 cat("\\newpage")
 ```
 
 #### Testing potential side biases
 
-_Table S3.- Number of individuals per treatment that chose the right (R) or left (L) side in each of the numerical tests. p-value indicates the result of the binomial test comparing the number of choices between sides. In bold, the groups where p-value < 0.05_
+_Table S4.- Number of individuals per treatment that chose the right (R) or left (L) side in each of the numerical tests. p-value indicates the result of the binomial test comparing the number of choices between sides. 
 ```{r, tbl-sides}
 #| label: tbl-sides
 #| tbl-cap: "Number of individuals per treatment that chose the right (R) or left (L) side in each of the numerical tests. p-value indicates the result of the binomial test comparing the number of choices between sides."
@@ -577,7 +656,7 @@ cat("\\newpage")
 #### Prey orientation test
 Because the orientation of the crickets could affect the lizards' choice, we performed one simple choice test to investigate this. We used the same platform and Petri dish as in the numerical discrimination task, but we placed one cricket on each side of the platform, one oriented vertically in respect to the shelter position (see @fig-Methods B) and the other one horizontal to the shelter. We performed a unique trial randomising the position of the orientation of the cricket. We recorded the number of individuals that chose the cricket oriented vertically and horizontally. Results are shown in the table below.
 
-_Table S4. Number of individuals per treatment that chose the cricket oriented horizontally (Horizontal) or vertically (Vertical) in our control tests. p-value indicates the result of the binomial test comparing the number of choices between both choices._
+_Table S4.- Number of individuals per treatment that chose the cricket oriented horizontally (Horizontal) or vertically (Vertical) in our control tests. p-value indicates the result of the binomial test comparing the number of choices between both choices._
 ```{r, tbl-orientation}
 #| label: tbl-orientation
 #| tbl-cap: "Number of individuals per treatment that chose the cricket oriented horizontally (Horizontal) or vertically (Vertical) in our control tests. p-value indicates the result of the binomial test comparing the number of choices between both choices."
@@ -599,10 +678,14 @@ data_or_res <- data_orient %>%
   ) %>% # Test for differences between sides
   ungroup() %>%  # Remove rowwise grouping
   mutate(trt = recode(trt, 
-            "B_23" = "CORT-Cold (n = 20)", 
-            "A_23" = "Control-Cold (n = 20)", 
-            "B_28" = "CORT-Hot (n = 20)", 
-            "A_28" = "Control-Hot (n = 20)")) %>% # To order the treatments
+            "B_23" = "Cold-CORT (n = 20)", 
+            "A_23" = "Cold-Control (n = 20)", 
+            "B_28" = "Hot-CORT (n = 20)", 
+            "A_28" = "Hot-Control (n = 20)"),
+          trt = factor(trt, levels = c("Hot-Control (n = 20)",
+                                  "Hot-CORT (n = 20)",
+                                  "Cold-Control (n = 20)",
+                                  "Cold-CORT (n = 20)"))) %>% # To order the treatments
   dplyr::select(trt, Horizontal_Count, Vertical_Count, p_value) %>% # Remove unused columns
 data.frame()
 #
@@ -610,10 +693,10 @@ data.frame()
 #
 # Split the table_data df by task
 orient_table <- flextable(data_or_res) %>%
-  compose(j = 1, value = as_paragraph(""), part = "header") %>%
-  compose(j = 2, value = as_paragraph("Horizontal"), part = "header") %>%
-  compose(j = 3, value = as_paragraph("Vertical"), part = "header") %>%
-  compose(j = 4, value = as_paragraph("p-value"), part = "header") %>%
+  flextable::compose(j = 1, value = as_paragraph(""), part = "header") %>%
+  flextable::compose(j = 2, value = as_paragraph("Horizontal"), part = "header") %>%
+  flextable::compose(j = 3, value = as_paragraph("Vertical"), part = "header") %>%
+  flextable::compose(j = 4, value = as_paragraph("p-value"), part = "header") %>%
   set_table_properties( width = 0.9, layout = "autofit") %>%
   align(align = "center", part = "all")
 orient_table
@@ -624,9 +707,9 @@ cat("\\newpage")
 ```
 
 #### Searching for relevant literature
-To loof for relevant literature about the effects of early environment on numerical discrimination, we searched in the Web of Science and Scopus using the terms on respectively. 
+To look for relevant literature about the effects of early environment on numerical discrimination, we searched in the Web of Science and Scopus using the terms on respectively. The queries employed are detailed below. We looked for manuscripts for all years available. The last search was conducted on the 11^th^ of October 2024; the results below refer to this last search.    
 
-We found 24 articles on Web of Science and 22 on Scopus, plus only one preprint on Scopus. Out of all the documents, only one study was relevant to our search: @vila_pouca_quantity_2019. That study appeared in both databases and was the only one that explored the effects of early environment on numerical abilities.
+We found 24 articles on Web of Science and 22 on Scopus, plus one preprint on Scopus. Out of all the documents, only one study was relevant to our search: @vila_pouca_quantity_2019. That study appeared in both databases and was the only one that explored the effects of early environment on numerical abilities.
 
 ```{r, fig-searchWOS}
 #| label: fig-searchWOS
