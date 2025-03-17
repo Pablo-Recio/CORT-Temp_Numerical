@@ -1,5 +1,5 @@
 ---
-title: "Quantity discrimination in the common garden skink and the role of early-life conditions"
+title: "Quantity discrimination, decision-making, and the role of early-life conditions in a lizard "
 docx: 
   reference-doc: "./bib/tmpl.docx"
 bibliography: "./bib/refs.bib"
@@ -45,11 +45,16 @@ data_length <- read.csv(here("./data/measures_crickets.csv")) %>%
   dplyr::select(test, mean_length_small, mean_length_large, mean_difference, `95% CI`)
 ```
 
-Pablo Recio^1^,$\ddagger$ , Dalton C. Leibold^1^, Ondi L. Crino ^1,2^, Christopher R. Friesen^3^, Amelia Y. Peardon ^1^, Daniel W.A. Noble^1^
+Pablo Recio^1^,$\ddagger$ , Dalton C. Leibold^1^, Ondi L. Crino ^1,2^, Christopher R. Friesen ^3,4^, Amelia Y. Peardon ^1^, Daniel W.A. Noble^1^
 
-^1^ Division of Ecology and Evolution, Research School of Biology, The Australian National University, Canberra, ACT 2601, Australia  
-^2^ College of Science and Engineering, Flinders University, Bedford Park, SA 5042, Australia 
-^3^ University of Wollongong, Wollongong, NSW 2500, Australia  
+^1^ Division of Ecology and Evolution, Research School of Biology, The Australian National University, Canberra, ACT 2601, Australia    
+
+^2^ College of Science and Engineering, Flinders University, Bedford Park, SA 5042, Australia   
+
+^3^ University of Wollongong, Wollongong, NSW 2500, Australia    
+
+^4^ Environmental Futures University of Wollongong, Wollongong, NSW, Australia  
+
 $\ddagger$ Corresponding author: pablo.reciosantiago@anu.edu.au  
 
 ORCID:
@@ -629,7 +634,7 @@ cat("\\newpage")
 
 #### Testing potential side biases
 
-_Table S4.- Number of individuals per treatment that chose the right (R) or left (L) side in each of the numerical tests. p-value indicates the result of the binomial test comparing the number of choices between sides. 
+_Table S4.- Number of individuals per treatment that chose the right (R) or left (L) side in each of the numerical tests. p-value indicates the result of the binomial test comparing the number of choices between sides._ 
 ```{r, tbl-sides}
 #| label: tbl-sides
 #| tbl-cap: "Number of individuals per treatment that chose the right (R) or left (L) side in each of the numerical tests. p-value indicates the result of the binomial test comparing the number of choices between sides."
