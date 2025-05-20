@@ -3,7 +3,7 @@ title: "Quantity discrimination, decision-making, and the role of early-life con
 docx: 
   reference-doc: "./bib/tmpl.docx"
 bibliography: "./bib/refs.bib"
-csl: "./bib/behavioral-ecology-and-sociobiology.csl"
+csl: "./bib/animal-cognition.csl"
 execute:
   echo: false
   error: false
