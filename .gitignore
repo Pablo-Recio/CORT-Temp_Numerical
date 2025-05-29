@@ -50,3 +50,6 @@ rsconnect/
 
 #Others
 screenshots_length/
+
+# VSCode files
+.vdoc.*.r
