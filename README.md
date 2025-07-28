@@ -4,7 +4,7 @@
 
 This repository contains the final code, data, and figures used in the following manuscript:
 
-Recio et al. 2024. Do early environmental experiences impact numerical discrimination abilities in a lizard? Behavioral Ecology and Sociobiology, under review. 
+Quantity discrimination, decision-making, and the role of early-life conditions in a lizard  
 
 Supplementary Materials: The supplementary materials associated with this paper is integrated within the ms.docx or ms.qmd files. 
 
@@ -23,9 +23,9 @@ The 📄 ms.qmd file makes use of files within a number of folders that are iden
         📄 func.R, which contains all the functions called later in the ms.qmd file. 
   📂 bib The bib folder contains:
         📄 refs.bib the references;
-        📄 behavioral-ecology-and-sociobiology.csl the journal formatting style file;
+        📄 animal-cognition.csl the journal formatting style file;
         📄 templ.docx a template docx file to format the resulting rendered files.
-  📂 BEHECOLSOC This folder contains all the material submitted to the journal and all the information from the reviews.
+  📂 ECOLEVOL This folder contains all the material submitted to the journal and all the information from the reviews.
 
 #### Reporting Issues or Asking Questions
 If anything is unclear or you require further detail please don't hesitate to lodge an issue.
