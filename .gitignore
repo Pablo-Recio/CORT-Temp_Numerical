@@ -54,3 +54,5 @@ screenshots_length/
 # VSCode files
 .vdoc.*.r
 .DS_Store
+.DS_Store
+output/.DS_Store
