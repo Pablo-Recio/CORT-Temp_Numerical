@@ -154,6 +154,23 @@ Subjects were collected from a breeding colony that had been kept in the lab sin
 source(here("R", "data_process.R"))
 ```
 
+```{r, sex_ratios}
+#| label: sex_ratios
+# Get the sex ratios for each treatment
+sex <- c("m", "f")
+trt <- c("A_23", "B_23", "A_28", "B_28")
+for(s in sex){
+  for(t in trt){
+    count <- data_num %>%
+      filter(day == 1, trt == t, sex == s) %>%
+      nrow()
+    
+    name <- paste0(t, "_", s)   # e.g. "A_23_f"
+    assign(name, count)
+  }
+}
+```
+
 ```{r, models}
 #| label: models
 # Fitting the model and extraction of posteriors 
@@ -200,6 +217,8 @@ post_int <- org_post("int")
 normality_results_int <- check_normality(post_int)
 #
 ```
+
+We recorded and analysed a total of 400 videos from 80 lizards (n = 20 per treatment, see @fig_results). The lizards were between `r min(data_num$age_raw)` and `r max(data_num$age_raw)` days post-hatching (see Fig. S5 in _Supplementary Material_). Final sample sizes were composed by 43 females and 37 males, with no less than 6 females per treatment and no more than 13.               
 
 Overall, males showed lower latencies than females (median of the estimated effect of sex = `r {format_dec(median(posteriors$b_loglatency_sexm), 2)}`, 95% HPDI = [`r {format_dec(hdi(posteriors$b_loglatency_sexm, credMass = 0.95)[1], 2)}`, `r {format_dec(hdi(posteriors$b_loglatency_sexm, credMass = 0.95)[2], 2)}`]), and older individuals also made decisions faster (mean estimated effect of age = `r {format_dec(median(posteriors$b_loglatency_age),2)}`, 95% HPDI = [`r {format_dec(hdi(posteriors$b_loglatency_age, credMass = 0.95)[1], 2)}`, `r {format_dec(hdi(posteriors$b_loglatency_age, credMass = 0.95)[2],2)}`]; see Table S3 in _Supplementary Material_). However, we did not see any effect of age or sex on _Choice_ or _Interest_ (see _Supplementary Material_).  
 
@@ -794,6 +813,49 @@ knitr::include_graphics("./Others/Web of Science Search results.png")
 knitr::include_graphics("./Others/Scopus - Document search results.png")
 
 ```
+
+```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+#### Lizards age by Treatment
+
+```{r, fig-age_treatment}
+#| label: fig-age
+#| fig.cap: "Distribution of the age of the lizards by treatment"
+# Plotting the distribution of the age of the lizards by treatment
+#
+plot_age_df <- data_num %>%
+  mutate(trt = factor(trt, 
+          levels = c("A_23", "B_23", "A_28", "B_28"), 
+          labels = c("Cold-Control", "Cold-CORT", "Hot-Control", "Hot-CORT")))
+#
+plot_age <- ggplot(plot_age_df, aes(x = age_raw, color = trt)) +
+  geom_density(aes(y = after_stat(count)), linewidth = 1.5) +
+  scale_color_manual(values = c("Cold-CORT" = "#00008B",
+                              "Cold-Control" = "#68bde1",
+                              "Hot-CORT" = "#b50101",
+                              "Hot-Control" = "#fa927d")) +  
+  labs(y = "Number of lizards", x = "Age (days)", color = "Treatments") +
+  theme_classic() +
+  theme(plot.margin = margin(5.5, 5.5, 5.5, 5.5, "mm"),
+    axis.text.y = element_text(size = 12, family = "Times"),   # Remove y-axis labels
+    axis.title = element_text(size = 12, family = "Times"),
+    axis.text = element_text(size = 10, family = "Times"),
+    legend.position = "right",
+    legend.title = element_text(size = 12, family = "Times"),
+    legend.text = element_text(size = 11, family = "Times")
+    ) 
+#
+ggsave("./output/figures/plot_age.png", plot=plot_age, width = 25, height = 18, units = "cm", dpi = 600)
+knitr::include_graphics("./output/figures/plot_age.png")
+```
+
+Fig. S5 - Distribution of the age of the lizards by treatment
 
 ```{r, results='asis', echo=FALSE}
 cat("\\newpage")

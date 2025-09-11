@@ -20,6 +20,7 @@ data_num <- read.csv(here("data/lizard_database_number.csv")) %>%
     labels = c("B" = "CORT", "A" = "Control"))) %>%
   mutate(test_type = factor(test_type,
     levels = c("1 VS 4", "1 VS 3", "2 VS 4", "2 VS 3", "3 VS 4"))) %>%
+  mutate(age_raw = as.numeric(age)) %>%
   mutate(age = scale(age, center = TRUE, scale =FALSE)) %>%
 data.frame()
 #
