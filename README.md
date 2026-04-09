@@ -25,7 +25,7 @@ The 📄 ms.qmd file makes use of files within a number of folders that are iden
         📄 refs.bib the references;
         📄 animal-cognition.csl the journal formatting style file;
         📄 templ.docx a template docx file to format the resulting rendered files.
-  📂 ECOLEVOL This folder contains all the material submitted to the journal and all the information from the reviews.
+  📂 EVOLECOL This folder contains all the material submitted to the journal and all the information from the reviews.
 
 #### Reporting Issues or Asking Questions
 If anything is unclear or you require further detail please don't hesitate to lodge an issue.
